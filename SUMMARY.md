@@ -1,3 +1,4 @@
 # Table of contents
 
-* [README](README.md)
+* [Making Movies with Geological Data in Blender](README.md)
+* [Understanding Blender GIS](understanding-blender-gis.md)
