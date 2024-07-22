@@ -8,6 +8,8 @@ Importing raster data is very similar to importing vector (shapefile) data, with
 
 This section assumes that you've set a scene CRS. To read more about that view the [Importing Vector Data](importing-vector-data.md) page.
 
+We'll be using the BlenderGIS add-on for this section, so make sure it's installed and enabled.
+
 ### Of Note:
 
 An important note about .tif files in Blender is about their transparency. At times, we'd like to have a .tif with a transparent background. However, in Blender, image transparency is complicated and often difficult to achieve depending on the original file format.&#x20;
