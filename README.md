@@ -4,6 +4,8 @@ Blender is a very powerful tool for making visualizations, especially those whic
 
 With a passionate community of users and developers behind the software, there are a number of add-ons and tools that we can reference to generate professional-grade movies. In this workbook, we'll be going over how to produce this visual:
 
+{% embed url="https://www.youtube.com/watch?v=0Ug4-aKhu2s" fullWidth="false" %}
+
 As we generate this visual, I'll be introducing concepts that can be referenced to generate models of any geospatial data. **This tutorial is meant for those who have at least a beginner background in Blender and a basic understanding of GIS data.**
 
 The following add-ons are required for this tutorial (and will probably be needed for any 3D geospacial project):
