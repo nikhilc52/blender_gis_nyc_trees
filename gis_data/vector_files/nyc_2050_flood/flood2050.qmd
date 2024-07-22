@@ -1,0 +1,45 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.38.0-Grenoble">
+  <identifier>NYC_Stormwater_Flood_Map_Moderate_Flood_2_13_per_hr_with_2050_Sea_Level_Rise</identifier>
+  <parentidentifier></parentidentifier>
+  <language>ENG</language>
+  <type>dataset</type>
+  <title>NYC_Stormwater_Flood_Map_Moderate_Flood_2_13_inches_per_hr_with_2050_Sea_Level_Rise</title>
+  <abstract>The geodatabase contains a single feature class that shows three (3) flooding categories. The "Nuisance Flooding (ponding depths greater or equal to 4 in. and less than 1 ft.)" and "Deep and Contiguous Flooding (ponding depths 1 ft. and greater)" categories were created using hydrologic and hydraulic computer models and represent flood risk due to moderate rainfall. The third category, "Future High Tides 2050", shows coastal tidal inundation based on the NYC Panel on Climate Change 90th percentile estimates for the 2050's and is sourced from the NYC Flood Hazard Mapper. Please refer to the New York City Stormwater Resiliency Plan for more information on the purpose of the study, how datasets were developed, applications for this data, and other details
+A coded value domain is used for the "Flooding_Category" field. See Column Info tab of the Data Dictionary for definition of each code.
+The New York City Stormwater Flood Maps show areas of potential flooding of at least 0.25 contiguous acres with flood depths of 4 inches or more. This dataset contains some potential flooding areas less than 0.25 acres due to proximity and overlap with masking layers.
+
+Citywide Geographic Information System (GIS) layer that shows areas of potential moderate flooding under a precipitation event of 2.13 inches per hour with 2050 Sea Level Rise scenario. Please see the New York City Stormwater Resiliency Plan for more information. Please direct questions or comments to StormwaterResiliency@cityhall.nyc.gov. NYC Stormwater Flood Maps: https://www1.nyc.gov/assets/orr/pdf/publications/stormwater-resiliency-plan.pdf http://nyc.gov/stormwater-map </abstract>
+  <keywords vocabulary="Search keys">
+    <keyword>NYC</keyword>
+    <keyword>DEP</keyword>
+    <keyword>Stormwater</keyword>
+    <keyword>Flooding</keyword>
+    <keyword>Map</keyword>
+  </keywords>
+  <links/>
+  <dates/>
+  <fees></fees>
+  <constraints type="Limitations of use">Disclaimer:
+This map was developed by the City of New York and is provided solely for informational purposes. The map shows areas of potential flooding of at least 0.25 contiguous acres with flood depths of 4 inches or more. The map is intended to be an informational tool and does not provide the exact depth of flooding at any location. 
+The map was created using hydrologic and hydraulic computer models and, therefore, the accuracy of results is limited by the available data input to the models, resolution of the models, and model calibration accuracy. The models do not account for site-specific conditions that may affect flooding, e.g., private drainage infrastructure, obstructed or clogged drains or future conditions such as new development and construction, or deterioration and replacement of existing infrastructure. The maps are intended to show the relative risk of flooding in public areas from stormwater runoff due to rain only. While the hydrologic and hydraulic models account for the effect of sea level rise on stormwater drainage infrastructure, they do not represent flood risk from coastal inundation due to sea level rise and/or storm surge.
+The City disclaims any liability for errors and make no warranties express or implied, including, but not limited to, implied warranties of merchantability and fitness for a particular purpose as to the quality, content, accuracy or completeness of the information, text graphics, links and other items contained in this map. Any determination of topography or contours, or any depiction of physical improvements, property lines or boundaries is for general information only and shall not be used for the design, modification, or construction of improvements to real property or for flood plain determination.</constraints>
+  <rights>Arcadis</rights>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt>PROJCRS["NAD83 / New York Long Island (ftUS)",BASEGEOGCRS["NAD83",DATUM["North American Datum 1983",ELLIPSOID["GRS 1980",6378137,298.257222101,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4269]],CONVERSION["SPCS83 New York Long Island zone (US Survey feet)",METHOD["Lambert Conic Conformal (2SP)",ID["EPSG",9802]],PARAMETER["Latitude of false origin",40.1666666666667,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8821]],PARAMETER["Longitude of false origin",-74,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8822]],PARAMETER["Latitude of 1st standard parallel",41.0333333333333,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8823]],PARAMETER["Latitude of 2nd standard parallel",40.6666666666667,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8824]],PARAMETER["Easting at false origin",984250,LENGTHUNIT["US survey foot",0.304800609601219],ID["EPSG",8826]],PARAMETER["Northing at false origin",0,LENGTHUNIT["US survey foot",0.304800609601219],ID["EPSG",8827]]],CS[Cartesian,2],AXIS["easting (X)",east,ORDER[1],LENGTHUNIT["US survey foot",0.304800609601219]],AXIS["northing (Y)",north,ORDER[2],LENGTHUNIT["US survey foot",0.304800609601219]],USAGE[SCOPE["Engineering survey, topographic mapping."],AREA["United States (USA) - New York - counties of Bronx; Kings; Nassau; New York; Queens; Richmond; Suffolk."],BBOX[40.47,-74.26,41.3,-71.8]],ID["EPSG",2263]]</wkt>
+      <proj4>+proj=lcc +lat_0=40.1666666666667 +lon_0=-74 +lat_1=41.0333333333333 +lat_2=40.6666666666667 +x_0=300000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=us-ft +no_defs</proj4>
+      <srsid>245</srsid>
+      <srid>2263</srid>
+      <authid>EPSG:2263</authid>
+      <description>NAD83 / New York Long Island (ftUS)</description>
+      <projectionacronym>lcc</projectionacronym>
+      <ellipsoidacronym>EPSG:7019</ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial maxx="-73.70503200000000277" maxz="0" dimensions="2" crs="EPSG:2263" miny="40.49598000000000297" minz="0" minx="-74.25717000000000212" maxy="40.91300799999999782"/>
+  </extent>
+</qgis>
