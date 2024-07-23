@@ -12,6 +12,7 @@ The following add-ons are required for this tutorial (and will probably be neede
 
 * [BlenderGIS](https://github.com/domlysz/BlenderGIS)
 * [Blosm](https://prochitecture.gumroad.com/l/blender-osm)
+* [Bpyproj](https://github.com/JeremyBYU/bpyproj)
 
 You can add these by downloading the ZIP (without unzipping) and going to Edit -> Preferences -> Add-ons -> Install and selecting the files.
 
