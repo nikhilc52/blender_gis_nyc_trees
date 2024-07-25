@@ -1,2 +1,69 @@
 # Rendering on a Cluster
 
+## Introduction
+
+***
+
+While rendering on one's own computer is simple, you can also render on a cluster with multiple parallel batches to speed up rendering. For instance, you can use a super computer to render frames 0 to 1000, 1000 to 2000, etc. all at the same time (in simultaneous commands).
+
+This page is only appliciable if you have a Princeton University NetID.
+
+## Rendering on Adroit
+
+***
+
+We'll be using the Adroit super computer for this process. The first step in rendering Blender files is to login to Adroit on a web browser. Go to [https://myadroit.princeton.edu/](https://myadroit.princeton.edu/) and log in using your NetID.
+
+Once you're logged in, go to the top bar and press Files and click on your home directory. From here, create a new folder somewhere that is going to hold your Blender files:
+
+**FIXME ADD IMAGE**
+
+Be sure that the Blender file you're inputting has all the proper settings, since we won't be able to edit them from Adroit (only a select few rendering options).
+
+Next, open up a terminal on your local computer. We'll first need to ssh into adroit, then go into adroit-vis:
+
+```
+ssh NETID@adroit.princeton.edu
+```
+
+Log in with your password, and verify with 2FA. From here, simply type:
+
+```
+ssh adroit-vis
+```
+
+This switches us over to adroit-vis. Now, we'll need to run (and edit) one command to render a set of frames:
+
+```
+/home/efeibush/blender/blender-4.2.0-linux-x64/blender -b file.blend -o /home/NETID/ -E CYCLES  -s 1 -e 5 -a  --  --cycles-device OPTIX+CPU
+```
+
+This command uses the Blender application in the efeibush directory to open the blender file in the background (-b file.blend), sets an output path (-o /home/NETID/) , uses the Cycles render engine (-E), starts at frame 1 (-s 1), ends at frame 5 (-e 5), renders all frames between (-a), and uses the OPTIX cycles device along with the CPU to render out frames (-- --cycles-device OPTIX+CPU). You can read more about how to customize the settings of this command [here](https://docs.blender.org/manual/en/latest/advanced/command\_line/arguments.html#command-line-args-cycles-render-options).&#x20;
+
+When you run this command, you'll see a bunch of text outputted that marks how far along Blender is when rendering each frame.
+
+### Of Note
+
+Note that you can also open up the Blender GUI from Adroit:&#x20;
+
+On [https://myadroit.princeton.edu/](https://myadroit.princeton.edu/), go to My Interactive Sessions and click on Desktop under the Interactive Apps section to the left. You should request an appropriate amount of time.
+
+Once you're able to launch the desktop, open it up and click on the middle terminal icon at the top left:
+
+<figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+
+This should open up a terminal within the virtual desktop titled "Mate Terminal".
+
+Next, run the following command on the terminal:
+
+```
+/home/efeibush/blender/blender-4.2.0-linux-x64/blender
+```
+
+This opens up a copy of Blender that is stored within the efeibush directory. You should now see a copy of Blender within your virual desktop. Within Blender, go to File -> Open and open the Blender file you stored at the start of this section. You'll now see the Blender file running on Adroit, and you can edit the file and render it from here (though it would take up more resources).&#x20;
+
+## Conclusion
+
+***
+
+This process can then be duplicated in a new terminal, by following the exact same steps above. From this, you would be able to split up a render into multiple parallel execution statments to very easily simplify the rendering process and get a final render much faster. For instance, one command could render frames 1 to 100, another from frames 101 to 200, etc.
