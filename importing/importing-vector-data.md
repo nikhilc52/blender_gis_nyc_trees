@@ -26,7 +26,7 @@ For instance, if we set the CRS to EPSG:2263, the origin in Blender (0,0,0) woul
 
 <figure><img src="../.gitbook/assets/image (10) (1) (1) (1) (1).png" alt="" width="398"><figcaption></figcaption></figure>
 
-Our data would still be accurately placed, but slightly annoying to work with, since we'd have to move and tweak a  few settings to accomodate from the offset. Still, this is a viable option depending on the data, but for the work we're doing, instead of dealing with that, I find it is much easier to just have the initial import be the baseline CRS, and have objects import relative to that.
+Our data would still be accurately placed, but slightly annoying to work with, since we'd have to move and tweak a  few settings to accommodate from the offset. Still, this is a viable option depending on the data, but for the work we're doing, instead of dealing with that, I find it is much easier to just have the initial import be the baseline CRS, and have objects import relative to that.
 
 Note that changing a scene CRS after it has been set and objects have been imported, will not re-align the already imported objects, and only affect the new ones.
 
@@ -48,7 +48,7 @@ Once selected, a menu should pop up showing some options for projecting.
 
 We can leave that first field as is: even though we don't want any elevation, since the shapefile we're using isn't 3D, the geometry z-value will be 0 anyway. We can leave the next two boxes unchecked as well, since those options don't fit the purpose of this import (which is just to be a background map). Next, the CRS is very important.
 
-Since this is our initial import, and we haven't yet specified the scene CRS, this import will set the scene CRS. We can click the "+" to add a new CRS, since by default, the BlenderGIS addon doesn't come with EPSG:2263. From there, we can query our file's CRS. Note that you can find any .shp file's CRS by looking in its .prj (projection) file with a text editor.
+Since this is our initial import, and we haven't yet specified the scene CRS, this import will set the scene CRS. We can click the "+" to add a new CRS, since by default, the BlenderGIS add-on doesn't come with EPSG:2263. From there, we can query our file's CRS. Note that you can find any .shp file's CRS by looking in its .prj (projection) file with a text editor.
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt="" width="235"><figcaption></figcaption></figure>
 
@@ -101,7 +101,7 @@ We can repeat this same process with the [2009 CHS survey](https://www.nyc.gov/s
 
 The last set of files we need to import are sets of points for each location of each tree. We have one file for all the alive trees and one file for all the dead ones (the [original file](https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/pi5s-9p35) isn't split - I've linked the split files in the [Data Sources](../data-sources.md) page, but you can create them yourself in QGIS). Since the [dead ones](https://github.com/nikhilc52/blender\_gis\_nyc\_trees/tree/b8e2d3d38b7b5c7a72589d1dc124ea76433ad9f1/gis\_data/vector\_files/nyc\_tree\_census\_2015\_dead) will take less time (there are fewer dead trees, so fewer points), we'll start with that.&#x20;
 
-The steps we take to import the points are the exact same as before - the only difference is that the resulting object is going to be a set of verticies instead of a plane.
+The steps we take to import the points are the exact same as before - the only difference is that the resulting object is going to be a set of vertices instead of a plane.
 
 <figure><img src="../.gitbook/assets/image (13) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -111,7 +111,7 @@ This looks good, so we can move on to the [alive set](https://github.com/nikhilc
 
 <figure><img src="../.gitbook/assets/image (19) (1) (1).png" alt="" width="482"><figcaption></figcaption></figure>
 
-Note that you if we were to render this right now, we wouldn't actually be able to see the points - verticies aren't visible in a 3D space. To see them, we'll have to attach objects to each of the points, which we'll go over in the [Setting Up Materials and Objects](../materials/setting-up-materials-and-objects.md) page.
+Note that you if we were to render this right now, we wouldn't actually be able to see the points - vertices aren't visible in a 3D space. To see them, we'll have to attach objects to each of the points, which we'll go over in the [Setting Up Materials and Objects](../materials/setting-up-materials-and-objects.md) page.
 
 ## Conclusion
 

@@ -26,11 +26,11 @@ From here, we'll need to add just three nodes to get it working:
 
 <figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
-The attribute node converts the "color" of the value of the custom object property "exercs2" into the map range node, which converts the original number, which has a range from 0 to 100 as indicated by the XML description of the data, into a number readible by Blender (0 to 1). From there, the numbers are converted to colors based on a color ramp node, and fed back into the Principled BSDF and finally into the Material Output.&#x20;
+The attribute node converts the "color" of the value of the custom object property "exercs2" into the map range node, which converts the original number, which has a range from 0 to 100 as indicated by the XML description of the data, into a number readable by Blender (0 to 1). From there, the numbers are converted to colors based on a color ramp node, and fed back into the Principled BSDF and finally into the Material Output.&#x20;
 
-The position of the white and black tickers in the color ramp node is very important, since placing either node too high or too low might cause "clipping" of values. For instance, if we placed the white ticker at 0.5 and there was a object with a excercs2 of 10 (.1 after map conversion) and another with an exercs2 of 40 (.4 after map conversion), they would both be mapped to the same color value, even though their values are much different. So, we should have the lower node placed at the lowest value of all the exercs2 values and the higher node placed at the highest of all the exercs2 values (placing the low ticker at 0 and the high ticker at 1 would certainly work, it wouldn't provide good enough precision).
+The position of the white and black tickers in the color ramp node is very important, since placing either node too high or too low might cause "clipping" of values. For instance, if we placed the white ticker at 0.5 and there was a object with a exercs2 of 10 (.1 after map conversion) and another with an exercs2 of 40 (.4 after map conversion), they would both be mapped to the same color value, even though their values are much different. So, we should have the lower node placed at the lowest value of all the exercs2 values and the higher node placed at the highest of all the exercs2 values (placing the low ticker at 0 and the high ticker at 1 would certainly work, it wouldn't provide good enough precision).
 
-So, to easily find the mininum and maximum values, we can run another Python script, which reads in our shapefile and prints out a list of all exercs2 values in order, which makes it easy to see where we should position our tickers:
+So, to easily find the minimum and maximum values, we can run another Python script, which reads in our shapefile and prints out a list of all exercs2 values in order, which makes it easy to see where we should position our tickers:
 
 {% file src="../.gitbook/assets/SHP_Reader.py" %}
 
@@ -90,7 +90,7 @@ Note that the legend shown in the rendered video was created manually in Google 
 
 As of right now, the individual points of the "dead\_trees" and "alive\_trees" objects won't be visible in our render, since they are just vertices. However, we can easily add 3D objects at the location of each vertex to make the data renderable. To do this, we'll need to append an object to put at each tree location.&#x20;
 
-In the repo, you can download the [tree-blank.blend](../blender\_trees/tree\_blank.blend) and [tree\_leaves.blend](../blender\_trees/tree\_leaves.blend) to use as objects that represent dead and alive trees, respectively. Once their downloaded, go to File -> Append and select the one of the .blend files. Then, go to Object -> Tree and press append. Do this for each file.
+In the repo, you can download the [tree-blank.blend](../blender\_trees/tree\_blank.blend) and [tree\_leaves.blend](../blender\_trees/tree\_leaves.blend) to use as objects that represent dead and alive trees, respectively. Once they're downloaded, go to File -> Append and select the one of the .blend files. Then, go to Object -> Tree and press append. Do this for each file.
 
 Now that we have the objects we want to be placed at each vertex, we can edit the geometry nodes of  the alive and dead tree shapefiles in the Geometry Node Editor. We'll start with the dead\_trees object, since it's smaller.
 
@@ -118,7 +118,11 @@ Right now, the trees don't have a color, but in the render their material is a r
 
 If you would like to do any other conditional coloring, that would have to be done through the geometry nodes.
 
-We can repeat this process entirely for the alive\_trees object, replacing the duplicated object and its material accordingly. However, there is one major caveat: the dead\_trees object duplication method had little to no lag since the number of duplicated objects was relatively small (about 14,000). However, the number of alive\_trees is substantially larger (around 650,000). If we were to try and duplicate the objects **and** see them in the viewport, it would tank our software's performance. So, before we perform the same action, **be sure that the alive\_trees object is turned off in the viewport**. This will allow Blender to do the duplicating calculations on the backend without actually having to display more than half a million objects at once.
+We can repeat this process entirely for the alive\_trees object, replacing the duplicated object and its material accordingly (making it green). However, there is one major caveat: the dead\_trees object duplication method had little to no lag since the number of duplicated objects was relatively small (about 14,000). However, the number of alive\_trees is substantially larger (around 650,000). If we were to try and duplicate the objects **and** see them in the viewport, it would tank our software's performance. So, before we perform the same action, **be sure that the alive\_trees object is turned off in the viewport**. This will allow Blender to do the duplicating calculations on the backend without actually having to display more than half a million objects at once.
+
+To test that the trees have loaded in properly, render a random frame in the animation, positioning the camera close enough to the street to see the tree objects. Ensure that the alive\_trees object is set to be visible in the render. A minute or so later, you should see the tree.
+
+Note that if you're not seeing the leaves correctly (showing as pink) this means that the leaf texture didn't load properly. To fix it, simply go to the original AliveTree object, go to the Materials tab, and click on the Tree Branch material and open it in a Shader Editor. Then, adjust the image texture to match the tree branch material in the [GitHub](../blender\_trees/tree\_branch.png). If you plan to render using Adroit, make sure that you place the tree branch PNG in a location whose relative path is transferrable.
 
 ## General Shapefile Materials
 
@@ -148,7 +152,7 @@ Be sure to apply the material to all the selected objects in the collection via 
 
 <figure><img src="../.gitbook/assets/image (29).png" alt="" width="310"><figcaption></figcaption></figure>
 
-Then, still with all the objects selected (and in edit mode), press 3 and select any top **and** bottom face (i.e. a face above the city running horizontally across and the corresponding face below the city). Here's a top face (left) and a bottom face (right) simultuniously selected (by holding shift) for reference:
+Then, still with all the objects selected (and in edit mode), press 3 and select any top **and** bottom face (i.e. a face above the city running horizontally across and the corresponding face below the city). Here's a top face (left) and a bottom face (right) simultaneously selected (by holding shift) for reference:
 
 <div>
 
@@ -180,7 +184,7 @@ When we deleted all the materials to set up the materials for buildings and road
 
 Note that you might want to move these three TIF files up 1m or so, to make sure they won't collide/overlap with our base plane, which is located at Z=0m.
 
-We'll start with "dead\_tree\_v1" which is a headmap for dead trees in NYC. With this object selected, add a new material in the Shader Editor workspace. Add an Image Texture node and connect it to the Principled BSDF. Also add a UV Map with the rastUVmap value and connect it to the vector of the Image Texture node. The result should look like this and you should now see the raster image in the 3D viewport (barring object overlaps, and ensuring that you're in Rendered View):
+We'll start with "dead\_tree\_v1" which is a heatmap for dead trees in NYC. With this object selected, add a new material in the Shader Editor workspace. Add an Image Texture node and connect it to the Principled BSDF. Also add a UV Map with the rastUVmap value and connect it to the vector of the Image Texture node. The result should look like this and you should now see the raster image in the 3D viewport (barring object overlaps, and ensuring that you're in Rendered View):
 
 <figure><img src="../.gitbook/assets/image (16) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -190,7 +194,7 @@ First, we'll add in an emission node, a transparent node (with the color being t
 
 <figure><img src="../.gitbook/assets/image (17).png" alt="" width="563"><figcaption></figcaption></figure>
 
-The emission node instead of a Principled BSDF makes it such that the lighting of our scene won't affect the visibility of our plane object (since it itself is a light). Then, we combine that image emmission with a transparent BSDF (with the default color) into our final image. With a Fac of 1, we won't notice any change in the 3D viewport, since the factor is what dictates how much influence each of thw two Shaders has (1 means all the influence is from our emission, whereas 0 means all of the influence is from the transparent node).
+The emission node instead of a Principled BSDF makes it such that the lighting of our scene won't affect the visibility of our plane object (since it itself is a light). Then, we combine that image emission with a transparent BSDF (with the default color) into our final image. With a Fac of 1, we won't notice any change in the 3D viewport, since the factor is what dictates how much influence each of the two Shaders has (1 means all the influence is from our emission, whereas 0 means all of the influence is from the transparent node).
 
 With this set up in place, we'll add three more nodes: RGB, Vector Math, and a Math node. Change the Vector Math node to calculate distance, the Math node to "greater than" with a threshold of .150, and the RGB to the background color of the tif (black). Configure them like so:
 
@@ -198,21 +202,21 @@ With this set up in place, we'll add three more nodes: RGB, Vector Math, and a M
 
 This set up calculates the 3D distance between the background color (black) and each pixel in our tif image (3D is just how Blender interprets to colors). If that distance is greater than our threshold of .150, meaning the color is not black (.150 is a standard threshold I've found works well, but can be changed if needed), then the Fac is 1 (remember that this means the influence is with our tif emission). If the color distance is less than .150 (meaning the color is close to black), then the Fac is 0, and the pixel is colored transparent.&#x20;
 
-This is the reason why using a TIF that contains actual data points with the same color as the backgroud is problematic: they will get keyed out, even though we want them to retain their color. As stated in an earlier page, consider adjusting the colors in an external program to fit the requirements for Blender manipulation.
+This is the reason why using a TIF that contains actual data points with the same color as the background is problematic: they will get keyed out, even though we want them to retain their color. As stated in an earlier page, consider adjusting the colors in an external program to fit the requirements for Blender manipulation.
 
 The last change we'll make is to the colors within our tif. We can add a color ramp like so to change the colors from the standard "magma" theme to something more fitting for dead trees:
 
 <figure><img src="../.gitbook/assets/image (19).png" alt="" width="563"><figcaption></figcaption></figure>
 
-The actual colors are from a reference scale online, but the locations of the ticks are farily arbitrary - unfortunately, I don't think there's a way to map specific values in an image to colors, since the output of the Image Texture node is just the RGB values of the image, nothing else (meaning Blender isn't picking up on any of the data values within the tif).&#x20;
+The actual colors are from a reference scale online, but the locations of the ticks are fairly arbitrary - unfortunately, I don't think there's a way to map specific values in an image to colors, since the output of the Image Texture node is just the RGB values of the image, nothing else (meaning Blender isn't picking up on any of the data values within the tif).&#x20;
 
 For the color ramp, I'm just placing the beginning tick at 0 for the lowest value in the color scale, then finding a good point to put the highest value (testing to see how it looks in the 3D viewport), then filling in the middle ticks evenly.
 
-Ideally, you should change the color scale more accurately within another software like QGIS, but if that isn't an option, this also sufficies. Within another software is also where you would be able to find the information to generate a scale for the image, like one that was shown in the final video (since generating that scale isn't possible in Blender alone).
+Ideally, you should change the color scale more accurately within another software like QGIS, but if that isn't an option, this also suffices. Within another software is also where you would be able to find the information to generate a scale for the image, like one that was shown in the final video (since generating that scale isn't possible in Blender alone).
 
 To generate that scale, I used QGIS to find the range of values (-8 to 8) and then used Google Drawings to make a scale gradient that matched the color ramp in Blender. Obviously, if you didn't change the color ramp in Blender, you can just use the given scale from whatever external GIS program you choose.
 
-We'll now repeat this node process for each of the other two raster objects (you can copy the nodes with Control/Command + C and paste them into another object), changing some of the values of the nodes slightly, to make them accomodate for the different background colors and image files that we're using:
+We'll now repeat this node process for each of the other two raster objects (you can copy the nodes with Control/Command + C and paste them into another object), changing some of the values of the nodes slightly, to make them accommodate for the different background colors and image files that we're using:
 
 temperature\_deviation\_parsed:
 

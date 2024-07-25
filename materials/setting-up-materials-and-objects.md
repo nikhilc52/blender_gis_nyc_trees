@@ -1,4 +1,4 @@
-# Setting Up OSM Materials
+# Setting Up OSM Materials and the Environment
 
 ## Introduction
 
@@ -76,7 +76,7 @@ From here, we can expand the materials tab, select the first option, scroll to t
 
 <figure><img src="../.gitbook/assets/image (30) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Note that this will also get rid of the materials we're using for the three raster files, but since we want to edit those anyway, its fine if we delete them for now.
+Note that this will also get rid of the materials we're using for the three raster files, but since we want to edit those anyway, it's fine if we delete them for now.
 
 The next step we'll take is to assign a solid color to all the buildings and another solid color to all the roads. This is so that we can easily edit all the meshes at once.
 
@@ -102,7 +102,7 @@ After that's done, add in the Building material and copy it to all the other bui
 
 While manually editing each of the collections will provide you with a greater understanding of the steps were taking in our rendering preparations, it is much easier to generate and run a Python script to do everything for us.
 
-The following script will accomplish the exact same steps that we did above, but much quicker. While I won't go over every line of code in this notebook, the comments within the Python file make it intuitive to understand. Remember that the steps taken here are just a baseline - you can edit the .py file to accomodate for any changes you make (like not wanting to delete a certain object or wanting a different material for certain roads).
+The following script will accomplish the exact same steps that we did above, but much quicker. While I won't go over every line of code in this notebook, the comments within the Python file make it intuitive to understand. Remember that the steps taken here are just a baseline - you can edit the .py file to accommodate for any changes you make (like not wanting to delete a certain object or wanting a different material for certain roads).
 
 {% file src="../.gitbook/assets/MaterialAutomation (1).py" %}
 
@@ -119,7 +119,7 @@ Next, make sure that all the objects in the OSM collections are visible in the 3
 
 Lastly, be sure to save a copy of your project before you run the Python script - some of the changes we make will be difficult to easily reverse if needed.
 
-If you press run, you should see some text outputed in the Console, and after a few seconds you should see the changes in the Blender enviornment.
+If you press run, you should see some text outputted in the Console, and after a few seconds you should see the changes in the Blender environment.
 
 ```
 --- Deleted Objects ---
@@ -201,7 +201,7 @@ You might notice that certain areas of the map have darker shaded materials:
 
 <figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
-This is due to the overlaps between buildings that occurs when we bring in OSM data (only in Cycles). Normally, the boolean modifier would help us solve these overlaps and miscolorings, but since the buildings have such a complex geometry, applying the modifier lags significantly and is not as effective. A simple workaround I've found is just to add a meter or two to the dimensions of the buildings on one side of the overlap:
+This is due to the overlaps between buildings that occurs when we bring in OSM data (only in Cycles). Normally, the boolean modifier would help us solve these overlaps and color errors, but since the buildings have such a complex geometry, applying the modifier lags significantly and is not as effective. A simple workaround I've found is just to add a meter or two to the dimensions of the buildings on one side of the overlap:
 
 <figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -209,4 +209,4 @@ Adding 2 meters to the left buildings made the overlap look like this:
 
 <figure><img src="../.gitbook/assets/image (9) (1).png" alt=""><figcaption></figcaption></figure>
 
-Obviously, the change isn't perfect, but it gets rid of a lot of the dark splots that come from object overlaps (formally known as Z-Fighting). You can repeat this process for any buildings that cause overlaps.
+Obviously, the change isn't perfect, but it gets rid of a lot of the dark spots that come from object overlaps (formally known as Z-Fighting). You can repeat this process for any buildings that cause overlaps.

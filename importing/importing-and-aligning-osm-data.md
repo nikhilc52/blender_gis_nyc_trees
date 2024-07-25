@@ -22,7 +22,7 @@ If we go within the "Scene Properties" tab, under "Custom Properties", we can se
 
 <figure><img src="../.gitbook/assets/image (15) (1) (1).png" alt="" width="333"><figcaption></figcaption></figure>
 
-We're going to use Blosm to import OSM data. However, Blosm uses a different set of fields for its CRS alignment: "lat" and "lon", corresponding to latitude and longitiude. Right now, the fields only correspond to the parameters interpreted by BlenderGIS.
+We're going to use Blosm to import OSM data. However, Blosm uses a different set of fields for its CRS alignment: "lat" and "lon", corresponding to latitude and longitude. Right now, the fields only correspond to the parameters interpreted by BlenderGIS.
 
 Without these parameters in place, the initial Blosm OSM import would create it's own CRS, as the mesh for whatever arbitrary location we select would **always** be placed at the (0,0,0) point of the scene, as opposed to its corresponding location on the map.
 
@@ -60,7 +60,7 @@ With that done, we'll go back to the Blosm sidebar, and (with the bpyproj add-on
 
 <figure><img src="../.gitbook/assets/image (11) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-The SRID is just a identifier for the CRS we're using (i.e. EPSG:2263). We'll put that into the field:
+The SRID is just anverticesvertices identifier for the CRS we're using (i.e. EPSG:2263). We'll put that into the field:
 
 <figure><img src="../.gitbook/assets/image (12) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -80,7 +80,7 @@ From here, we can just press "import" to align and bring in our data. After a fe
 
 We can now repeat this process for the rest of the city, selecting, copying, pasting, and importing the appropriate data (our settings save, so there's no need to change anything with the CRS). While not an issue right now, try to limit the number of overlaps of buildings/coordinate boxes. The fewer the number of overlaps, the less work we have to do later when generating material colors for the buildings  (since overlaps cause buildings to darken).
 
-You might notice that the heights of the buildings are a bit shortened. While there isn't a way to get them 100% accurate, we can do one of two things to make them look more realistic. One is just to approximate the height by scaling up the "buildings" object along the z-axis only, until it looks "normal". Another, more complicated method is to find the real-world dimensions of a building, find the building in Blender, then measuring the x and y dimensions in Blender-units (using its verticies) and scaling the z-axis only, according to how the x and y are scaled, to make everything accurate. I imagine that the first method is more efficient, since the heights of buildings don't need to be 100% accurate for the point of the video to be understood. However, this varies case-to-case.
+You might notice that the heights of the buildings are a bit shortened. While there isn't a way to get them 100% accurate, we can do one of two things to make them look more realistic. One is just to approximate the height by scaling up the "buildings" object along the z-axis only, until it looks "normal". Another, more complicated method is to find the real-world dimensions of a building, find the building in Blender, then measuring the x and y dimensions in Blender-units (using its vertices) and scaling the z-axis only, according to how the x and y are scaled, to make everything accurate. I imagine that the first method is more efficient, since the heights of buildings don't need to be 100% accurate for the point of the video to be understood. However, this varies case-to-case.
 
 Make sure to apply whatever changes to sizing you do to one set of buildings, to all buildings, to preserve scale.
 

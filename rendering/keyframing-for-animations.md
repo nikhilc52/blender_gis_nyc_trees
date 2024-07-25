@@ -34,7 +34,7 @@ Now, at frame one on the Timeline, we'll set our camera at a good position, and 
 
 <figure><img src="../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure>
 
-Let's now go to another position, at frame 100. Once there, press I on the location and roation to keyframe that location:
+Let's now go to another position, at frame 100. Once there, press I on the location and rotation to keyframe that location:
 
 <figure><img src="../.gitbook/assets/image (4).png" alt="" width="375"><figcaption></figcaption></figure>
 
@@ -78,7 +78,7 @@ To keyframe the alpha value for our buildings, simply select any building object
 
 Let's try this with an example. Suppose we want the material to be solid (alpha of 1) for the first 50 keyframes. Then, for the next ten (51-60) we want it to be translucent (alpha of 0.1), and the rest of the animation, we want it to be solid again.&#x20;
 
-We can do this with just five keyframes: one at the beggining with an alpha of 1, one at frame 50 also with an alpha of 1 (meaning we want an alpha of 1 between all those frames), one at frame 51 with an alpha of 0.1, one at frame 60 with an alpha of 0.1 (meaning we want an alpha of 0.1 between all those frames), and finally one at frame 61 with an alpha of 1:
+We can do this with just five keyframes: one at the beginning with an alpha of 1, one at frame 50 also with an alpha of 1 (meaning we want an alpha of 1 between all those frames), one at frame 51 with an alpha of 0.1, one at frame 60 with an alpha of 0.1 (meaning we want an alpha of 0.1 between all those frames), and finally one at frame 61 with an alpha of 1:
 
 <figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 

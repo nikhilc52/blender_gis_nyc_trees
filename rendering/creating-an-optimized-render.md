@@ -4,7 +4,7 @@
 
 ***
 
-If we were to render a medium-length animation with the default settings, our render would take days to complete. This is due to the sheer size of our file, objects, and lights. The Blender file used to create the final render you saw in the introduction was just under 500 MB, with millions of verticies, faces, and triangles.
+If we were to render a medium-length animation with the default settings, our render would take days to complete. This is due to the sheer size of our file, objects, and lights. The Blender file used to create the final render you saw in the introduction was just under 500 MB, with millions of vertices, faces, and triangles.
 
 To compensate for this, we'll need to sacrifice some quality in our render. Still, if we choose the right export settings we can get a relatively fast render time with a good-looking quality.
 
@@ -24,7 +24,7 @@ The render for the final movie took over 12 hours (for 3,200 frames). However, s
 
 The frames that took the longest to render (0 - \~1100 and \~3100+) were the frames where all the alive trees were showing. This is most likely due to the fact that each of these (\~600,000) points were represented by a tree object with an emission material, meaning that Blender had to do light calculations (which are fairly expensive) for every visible tree, which adds to the render time.
 
-The middle frames (\~1100 - 2300) only took a few seconds each, since all the trees were hidden, meaning Blender only had to do light calculations for the sun object. The latter part of the middle section (\~2300 - \~2700) were frames that showed all the dead trees (\~14,000 points). Though these were represented by emmission materials, since they were significantly less points than the alive trees, the render time didn't take quite as long as the frames where alive trees were showing.
+The middle frames (\~1100 - 2300) only took a few seconds each, since all the trees were hidden, meaning Blender only had to do light calculations for the sun object. The latter part of the middle section (\~2300 - \~2700) were frames that showed all the dead trees (\~14,000 points). Though these were represented by emission materials, since they were significantly less points than the alive trees, the render time didn't take quite as long as the frames where alive trees were showing.
 
 Knowing this information might help you understand where the of render time is spent, which can help you compensate for renders that are taking too long (by showing alive trees for a shorter time, for instance).&#x20;
 
@@ -44,7 +44,7 @@ The first change I'm making is to the number of samples, which I'm taking down f
 | 0.5 Noise Threshold (Render Properties -> Sampling -> Render)      | 25.83                   | Noise level to stop sampling at (higher means more image noise)                                            | [GitHub](../other\_resources/sample\_renders/noise\_threshold.png) |
 | Persistent Data (Render Properties -> Performance -> Final Render) | 38.55                   | Keep data for re-renders (useful for files where rending might be done more than once) \[uses more memory] | [GitHub](../other\_resources/sample\_renders/persistent\_data.png) |
 
-You can read more about these settings what what they do [here](https://docs.blender.org/manual/en/latest/render/cycles/render\_settings/sampling.html).
+You can read more about these settings what they do [here](https://docs.blender.org/manual/en/latest/render/cycles/render\_settings/sampling.html).
 
 Combining the two above settings as well as doing minor things like making sure all other computer applications are closed and that the Blender file is in Solid Mode in the 3D viewport (saves memory) can help to significantly speed up render times.
 

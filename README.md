@@ -5,7 +5,7 @@ coverY: 0
 
 # 3D Movies with GIS Data in Blender
 
-Blender is a very powerful tool for making visualizations, especially those which can be elevated by a three dimentional presentation.&#x20;
+Blender is a very powerful tool for making visualizations, especially those which can be elevated by a three dimensional presentation.&#x20;
 
 With a passionate community of users and developers behind the software, there are a number of add-ons and tools that we can reference to generate professional-grade movies. In this workbook, we'll be going over how to produce this visual:
 
@@ -13,7 +13,7 @@ With a passionate community of users and developers behind the software, there a
 
 As we generate this visual, I'll be introducing concepts that can be referenced to generate models of any geospatial data. **This tutorial is meant for those who have at least a beginner background in Blender and a basic understanding of GIS data.**
 
-The following add-ons are required for this tutorial (and will probably be needed for any 3D geospacial project):
+The following add-ons are required for this tutorial (and will probably be needed for any 3D geospatial project):
 
 * [BlenderGIS](https://github.com/domlysz/BlenderGIS)
 * [Blosm](https://prochitecture.gumroad.com/l/blender-osm)
