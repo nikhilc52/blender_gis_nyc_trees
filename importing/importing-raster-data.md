@@ -10,6 +10,8 @@ This section assumes that you've set a scene CRS. To read more about that view t
 
 We'll be using the BlenderGIS add-on for this section, so make sure it's installed and enabled.
 
+If you're planning on rendering your program using Adroit, make sure to put these raster files in a location that can be transfered to a new directory and maintain its connection to the original Blender file with a relative path (i.e. make a folder in the same location as the Blender file for all the raster images, so that when you need to transfer files to Adroit, your files are all in one place and the relative path to those files is maintained).&#x20;
+
 ### Of Note:
 
 An important note about .tif files in Blender is about their transparency. At times, we'd like to have a .tif with a transparent background. However, in Blender, image transparency is complicated and often difficult to achieve depending on the original file format.&#x20;

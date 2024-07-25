@@ -11,14 +11,14 @@
 
 ## Materials
 
-* [Setting Up OSM Materials](materials/setting-up-materials-and-objects.md)
+* [Setting Up OSM Materials and the Environment](materials/setting-up-materials-and-objects.md)
 * [Setting Up SHP and TIF Materials](materials/setting-up-shp-and-tif-materials.md)
 
 ## Rendering
 
 * [Keyframing for Animations](rendering/keyframing-for-animations.md)
 * [Creating an Optimized Render](rendering/creating-an-optimized-render.md)
-* [Rendering on a Cluster](rendering/rendering-on-a-cluster.md)
+* [Rendering on Adroit](rendering/rendering-on-adroit.md)
 
 ***
 

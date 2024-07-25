@@ -227,3 +227,5 @@ tree\_heatmap\_v1:
 ***
 
 We've now added a material to every single object in our render, which means we're ready to keyframe objects for our final animation.&#x20;
+
+Note that in my final render, I added three "cover planes" to hide raster and vector data that I didn't have OSM buildings for. This is as simple as adding a plane with the same material as our base plane, move and scaling it to the proper location, and moving it up 1m in the Z. You can repeat this process to cover as many areas as needed, making sure to try and avoid object overlap by positioning each plane on a different Z coordinate (i.e. have one plane at location 1.1m, one at 1.2m, etc.).

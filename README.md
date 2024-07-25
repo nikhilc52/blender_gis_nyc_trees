@@ -1,3 +1,8 @@
+---
+cover: .gitbook/assets/anim0001.png
+coverY: 0
+---
+
 # 3D Movies with GIS Data in Blender
 
 Blender is a very powerful tool for making visualizations, especially those which can be elevated by a three dimentional presentation.&#x20;

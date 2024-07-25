@@ -28,6 +28,8 @@ The middle frames (\~1100 - 2300) only took a few seconds each, since all the tr
 
 Knowing this information might help you understand where the of render time is spent, which can help you compensate for renders that are taking too long (by showing alive trees for a shorter time, for instance).&#x20;
 
+Also keep in mind that certain frames that are just "held" in the animation (frames where there is no camera movement and the given frame is shown for the whole time) can be cut down to just one frame, and held in another video editing software. For example, if frames 100-150 had the same PNG output, you could shorten the sequence in Blender to just frame 100 and then copy that frame 50 times in another software, shortening the render time in Blender by 49 frames.
+
 ## Settings to Speed Up Renders
 
 ***

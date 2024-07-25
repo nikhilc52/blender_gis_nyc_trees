@@ -1,6 +1,6 @@
-# Rendering on a Cluster
+# Rendering on Adroit
 
-## Introduction
+Introduction
 
 ***
 
@@ -16,9 +16,11 @@ We'll be using the Adroit super computer for this process. The first step in ren
 
 Once you're logged in, go to the top bar and press Files and click on your home directory. From here, create a new folder somewhere that is going to hold your Blender files:
 
-**FIXME ADD IMAGE**
+<figure><img src="../.gitbook/assets/image (40).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Be sure that the Blender file you're inputting has all the proper settings, since we won't be able to edit them from Adroit (only a select few rendering options).
+Make sure to add in your image files for the raster data in the same location as it is locally, so that the Blender file on Adroit can reference the same images with the same relative path.
+
+Be sure that the Blender file you're inputting has all the proper settings, since we won't be able to edit them from Adroit (don't worry about the file output path or the render engine, we'll coordinate those with Adroit later ).
 
 Next, open up a terminal on your local computer. We'll first need to ssh into adroit, then go into adroit-vis:
 
@@ -35,12 +37,14 @@ ssh adroit-vis
 This switches us over to adroit-vis. Now, we'll need to run (and edit) one command to render a set of frames:
 
 ```
-/home/efeibush/blender/blender-4.2.0-linux-x64/blender -b file.blend -o /home/NETID/ -E CYCLES  -s 1 -e 5 -a  --  --cycles-device OPTIX+CPU
+/home/efeibush/blender/blender-4.2.0-linux-x64/blender -b file.blend -o /home/NETID/Blender/nyc_trees/images -E CYCLES  -s 1 -e 5 -a  --  --cycles-device OPTIX+CPU
 ```
 
 This command uses the Blender application in the efeibush directory to open the blender file in the background (-b file.blend), sets an output path (-o /home/NETID/) , uses the Cycles render engine (-E), starts at frame 1 (-s 1), ends at frame 5 (-e 5), renders all frames between (-a), and uses the OPTIX cycles device along with the CPU to render out frames (-- --cycles-device OPTIX+CPU). You can read more about how to customize the settings of this command [here](https://docs.blender.org/manual/en/latest/advanced/command\_line/arguments.html#command-line-args-cycles-render-options).&#x20;
 
-When you run this command, you'll see a bunch of text outputted that marks how far along Blender is when rendering each frame.
+Make sure that you're in the working directory where the .blend file is located.
+
+When you run this command, you'll see a bunch of text outputted that marks how far along Blender is when rendering each frame. You can make sure each frame is being rendered properly by looking back in the home directory on [https://myadroit.princeton.edu/](https://myadroit.princeton.edu/).
 
 ### Of Note
 
@@ -67,3 +71,11 @@ This opens up a copy of Blender that is stored within the efeibush directory. Yo
 ***
 
 This process can then be duplicated in a new terminal, by following the exact same steps above. From this, you would be able to split up a render into multiple parallel execution statments to very easily simplify the rendering process and get a final render much faster. For instance, one command could render frames 1 to 100, another from frames 101 to 200, etc.
+
+To save the images you outputted to your directory on Adroit, you can use this command on a local terminal:
+
+```
+scp -r adroit:/home/NETID/Blender/nyc_trees/images/ /Users/XXXXXX/Documents/images/
+```
+
+This takes the all files from Adroit and saves them to the local directory, where you can then import them into a video editing software.

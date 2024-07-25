@@ -6,8 +6,6 @@ In the original Blender file in [GitHub](nyc\_trees.blend.zip), there are a few 
 
 * The alignment of the buildings to the rest of the BlenderGIS imports was done manually rather than using the CRS and alignment provided in Blosm
   * I only discovered the very elusive solution to Blosm projections after the final render was complete
-* The coastlines are not scaled to 0 along the Z axis
-* The building height for all non map\_20.osm collections is unadjusted
 * There are several unneeded keyframes for the render visibility keying - they make no difference in the final product
   * The keyframes are structured as if render visibility can be interpolated between frames, even though it is binary (i.e. no need to have keyframes that are adjacent to each other to switch between on/off)
 
@@ -16,6 +14,10 @@ In the original Blender file in [GitHub](nyc\_trees.blend.zip), there are a few 
 It might be useful to see a video tutorial going through the steps outlined in here for further clarity. This tutorial is linked here:
 
 
+
+## Rendered Video Editing
+
+The final rendered output in Blender was then editing using Adobe Premiere Pro. The voiceover was recorded using Voice Memos and processed using Adobe Podcast.
 
 ## About
 
