@@ -14,17 +14,17 @@ Be sure that you're labeling your materials appropriately, to stay organized wit
 
 The CHS health survey shapefile provides several custom properties that represent survey data points. If we want to apply a color scale to the polygons based on a custom property, we can easily do that via the shader editor (using nodes). Here's where you can find the custom properties of all the CHS objects:
 
-<figure><img src=".gitbook/assets/image.png" alt="" width="280"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt="" width="280"><figcaption></figcaption></figure>
 
 First, to get a better understanding of what the data represents, you can look through any data that accompanied the shapefile download - specifically the XML which provides definitions for all the abbreviated variables. I'll be using the "exercs2" attribute for this tutorial.
 
 Back in Blender, open up a Shader Editor viewport, select any one of the objects under the CHS collection, and add a new material:
 
-<figure><img src=".gitbook/assets/image (1).png" alt="" width="319"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt="" width="319"><figcaption></figcaption></figure>
 
 From here, we'll need to add just three nodes to get it working:
 
-<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 The attribute node converts the "color" of the value of the custom object property "exercs2" into the map range node, which converts the original number, which has a range from 0 to 100 as indicated by the XML description of the data, into a number readible by Blender (0 to 1). From there, the numbers are converted to colors based on a color ramp node, and fed back into the Principled BSDF and finally into the Material Output.&#x20;
 
@@ -32,7 +32,7 @@ The position of the white and black tickers in the color ramp node is very impor
 
 So, to easily find the mininum and maximum values, we can run another Python script, which reads in our shapefile and prints out a list of all exercs2 values in order, which makes it easy to see where we should position our tickers:
 
-{% file src=".gitbook/assets/SHP_Reader.py" %}
+{% file src="../.gitbook/assets/SHP_Reader.py" %}
 
 You can run this program inside or outside of Blender, since it doesn't have anything to do with our Blender file's data. If you choose to run the file within Blender, you will need to install **both pandas and geopandas** with pip:
 
@@ -76,11 +76,11 @@ With our nodes in place, we might not immediately see a change in color, this mi
 
 To apply the material (and color scale) to all objects in this collection, simply navigate to the Material Properties tab, and with all of the objects in the CHS collection selected, press copy to selected. You should now see something like this in the viewport:
 
-<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 If you don't see this, make sure that your nodes match mine **exactly** (Name: exercs2, Type: Object, From Min: 0.000, From Max: 0.000):
 
-<figure><img src=".gitbook/assets/image (4).png" alt="" width="259"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt="" width="259"><figcaption></figcaption></figure>
 
 ## Shapefile Point Objects
 
@@ -88,17 +88,17 @@ If you don't see this, make sure that your nodes match mine **exactly** (Name: e
 
 As of right now, the individual points of the "dead\_trees" and "alive\_trees" objects won't be visible in our render, since they are just vertices. However, we can easily add 3D objects at the location of each vertex to make the data renderable. To do this, we'll need to append an object to put at each tree location.&#x20;
 
-In the repo, you can download the [tree-blank.blend](blender\_trees/tree\_blank.blend) and [tree\_leaves.blend](blender\_trees/tree\_leaves.blend) to use as objects that represent dead and alive trees, respectively. Once their downloaded, go to File -> Append and select the one of the .blend files. Then, go to Object -> Tree and press append. Do this for each file.
+In the repo, you can download the [tree-blank.blend](../blender\_trees/tree\_blank.blend) and [tree\_leaves.blend](../blender\_trees/tree\_leaves.blend) to use as objects that represent dead and alive trees, respectively. Once their downloaded, go to File -> Append and select the one of the .blend files. Then, go to Object -> Tree and press append. Do this for each file.
 
 Now that we have the objects we want to be placed at each vertex, we can edit the geometry nodes of  the alive and dead tree shapefiles in the Geometry Node Editor. We'll start with the dead\_trees object, since it's smaller.
 
 With the dead\_trees object selected, go to a Geometry Node Editor workspace, and add a new set of geometry nodes:
 
-<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 We'll now add Object Info, Transform Geometry and Instance on Points nodes to achieve our desired output:
 
-<figure><img src=".gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 All this set up is doing is taking the Geometry from an object in our scene (Tree), transforming it (though in this case I'm leaving it default), instancing that geometry at every point (given by the Group Input), and outputting that information.
 
@@ -106,13 +106,13 @@ While the Transform Geometry node isn't being used in this scenario, it's useful
 
 You'll now see trees at every location that was previously just a point:
 
-<figure><img src=".gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 Right now, the trees don't have a color, but in the render their material is a red emission surface. You can change the material of the trees by editing the "original" tree that is duplicated at each point (the Tree object in this case). If we change the material there, it will automatically update across the scene:
 
-<figure><img src=".gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 If you would like to do any other conditional coloring, that would have to be done through the geometry nodes.
 
@@ -124,11 +124,11 @@ We can repeat this process entirely for the alive\_trees object, replacing the d
 
 The easiest of changes to materials we have to make is to the flood2050 and nyct2020 objects. Since these shapefiles were imported as a singular objects, all we have to do is add a material to that singular object. We'll start with the flood2050 object: Simply select it, and add a new emission material, appropriately colored blue, and you'll immediately see the changes in the viewport (note that I'm moving the object up 2m in the Z, for visibility):
 
-<figure><img src=".gitbook/assets/image (24).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (24).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Do the same for the nyct2020 object. With it selected, add a new material with a somewhat darker shade than the base plane (like #E5D8CE, for instance). I'm also moving the object up along the Z, but only by 0.1m this time:
 
-<figure><img src=".gitbook/assets/image (25).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (25).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ## Shapefile Border Materials
 
@@ -140,21 +140,21 @@ There's just a few things we have to get set up to use the boundaries effectivel
 
 First, assign a material to the object. Since this is meant to be an outline, I'm going to use a solid black color. Make sure to label the material accordingly:
 
-<figure><img src=".gitbook/assets/image (27).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (27).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Be sure to apply the material to all the selected objects in the collection via the dropdown on the left (Copy Material to Selected). Next, with all the objects selected, we'll press Tab -> 2 -> A -> E -> 100 and hit enter. This series of steps takes all the edges of our objects, and moves them up 100m so that we get a wall at each border location:
 
-<figure><img src=".gitbook/assets/image (29).png" alt="" width="310"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (29).png" alt="" width="310"><figcaption></figcaption></figure>
 
 Then, still with all the objects selected (and in edit mode), press 3 and select any top **and** bottom face (i.e. a face above the city running horizontally across and the corresponding face below the city). Here's a top face (left) and a bottom face (right) simultuniously selected (by holding shift) for reference:
 
 <div>
 
-<figure><img src=".gitbook/assets/image (30).png" alt="" width="290"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (30).png" alt="" width="290"><figcaption></figcaption></figure>
 
  
 
-<figure><img src=".gitbook/assets/image (31).png" alt="" width="277"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (31).png" alt="" width="277"><figcaption></figcaption></figure>
 
 </div>
 
@@ -162,11 +162,11 @@ The, press Shift + G -> Normal -> X -> Only Faces. This selects and deletes all 
 
 Next, we'll add a solidify modifier with a Thickness of 100m (remember, we're trying to make this visible from far away), making sure to press the drop down and select "Copy to Selected" to paste the modifier on all the border objects:
 
-<figure><img src=".gitbook/assets/image (28).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (28).png" alt="" width="375"><figcaption></figcaption></figure>
 
 With all our border objects containing the right material and modifiers, we can now preview the desired border effect:
 
-<figure><img src=".gitbook/assets/image (32).png" alt="" width="260"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (32).png" alt="" width="260"><figcaption></figcaption></figure>
 
 For now, we'll leave this as is (but hide it in the 3D viewport). We'll be keyframing the edges of this object in a later section, so that the borders don't show when we're close enough to the city to see buildings or when we're showing another map so they don't distract from the other content.
 
@@ -180,19 +180,19 @@ Note that you might want to move these three TIF files up 1m or so, to make sure
 
 We'll start with "dead\_tree\_v1" which is a headmap for dead trees in NYC. With this object selected, add a new material in the Shader Editor workspace. Add an Image Texture node and connect it to the Principled BSDF. Also add a UV Map with the rastUVmap value and connect it to the vector of the Image Texture node. The result should look like this and you should now see the raster image in the 3D viewport (barring object overlaps, and ensuring that you're in Rendered View):
 
-<figure><img src=".gitbook/assets/image (16).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Note that the UV Map node won't make a difference right now since our plane doesn't have an elevation/displacement. Still, it's good practice to leave the UV Map node connected incase we change the plane later. We'll now work on removing the image background, since its current state doesn't look too visually appealing. This node set up is based on this two minute [tutorial](https://www.youtube.com/watch?v=\_DYYlYrKvoE), where the set up is fully explained.&#x20;
 
 First, we'll add in an emission node, a transparent node (with the color being the color of our base plane), and a mix shader connected to the material output:
 
-<figure><img src=".gitbook/assets/image (17).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt="" width="563"><figcaption></figcaption></figure>
 
 The emission node instead of a Principled BSDF makes it such that the lighting of our scene won't affect the visibility of our plane object (since it itself is a light). Then, we combine that image emmission with a transparent BSDF (with the default color) into our final image. With a Fac of 1, we won't notice any change in the 3D viewport, since the factor is what dictates how much influence each of thw two Shaders has (1 means all the influence is from our emission, whereas 0 means all of the influence is from the transparent node).
 
 With this set up in place, we'll add three more nodes: RGB, Vector Math, and a Math node. Change the Vector Math node to calculate distance, the Math node to "greater than" with a threshold of .150, and the RGB to the background color of the tif (black). Configure them like so:
 
-<figure><img src=".gitbook/assets/image (18).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18).png" alt="" width="563"><figcaption></figcaption></figure>
 
 This set up calculates the 3D distance between the background color (black) and each pixel in our tif image (3D is just how Blender interprets to colors). If that distance is greater than our threshold of .150, meaning the color is not black (.150 is a standard threshold I've found works well, but can be changed if needed), then the Fac is 1 (remember that this means the influence is with our tif emission). If the color distance is less than .150 (meaning the color is close to black), then the Fac is 0, and the pixel is colored transparent.&#x20;
 
@@ -200,7 +200,7 @@ This is the reason why using a TIF that contains actual data points with the sam
 
 The last change we'll make is to the colors within our tif. We can add a color ramp like so to change the colors from the standard "magma" theme to something more fitting for dead trees:
 
-<figure><img src=".gitbook/assets/image (19).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19).png" alt="" width="563"><figcaption></figcaption></figure>
 
 The actual colors are from a reference scale online, but the locations of the ticks are farily arbitrary - unfortunately, I don't think there's a way to map specific values in an image to colors, since the output of the Image Texture node is just the RGB values of the image, nothing else (meaning Blender isn't picking up on any of the data values within the tif).&#x20;
 
@@ -214,11 +214,11 @@ We'll now repeat this node process for each of the other two raster objects, cha
 
 temperature\_deviation\_parsed:
 
-<figure><img src=".gitbook/assets/image (20).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (20).png" alt="" width="563"><figcaption></figcaption></figure>
 
 tree\_heatmap\_v1:
 
-<figure><img src=".gitbook/assets/image (21).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (21).png" alt="" width="563"><figcaption></figcaption></figure>
 
 ## Conclusion:
 
