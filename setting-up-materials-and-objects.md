@@ -18,7 +18,7 @@ There are two ways we can manipulate objects (which involves removing unneeded o
 
 In my render, I chose to omit certain objects that I didn't like the look of. These objects are listed below:
 
-<figure><img src=".gitbook/assets/image (31).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (31) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 I've deleted these "type" (areas\_footway, areas\_pedestrian, etc.) of objects for every map\_xx.osm collection.&#x20;
 
@@ -26,11 +26,11 @@ With these objects out of the way, we need to do some conversions to make the re
 
 To apply the wireframe modifier we'll need to convert all the road objects (and paths\_footway) into meshes. We can do this by selecting them in the outliner, then pressing Object -> Convert -> Mesh at the top of the 3D viewport:
 
-<figure><img src=".gitbook/assets/image (32).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (32) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Then, with the same objects selected, we can add a wireframe modifier with a thickness of 0.5m, and select "Copy to Selected" from the drop down menu.
 
-<figure><img src=".gitbook/assets/image (33).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (33) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 If we look in the viewport, all of the roads will now be "hollow" and only made up of thin lines:
 
@@ -62,11 +62,11 @@ The first thing we can do to manage materials is a bit blunt, but works well for
 
 We can easily get rid of these materials and slots by going to the Blender File section of the Outliner:
 
-<figure><img src=".gitbook/assets/image (29).png" alt="" width="536"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (29) (1).png" alt="" width="536"><figcaption></figcaption></figure>
 
 From here, we can expand the materials tab, select the first option, scroll to the bottom and hold Shift+Left Click, to select all the materials. From here, we can simply delete the materials. Our scene looks a lot more barren now, but it's ready to be shaded.
 
-<figure><img src=".gitbook/assets/image (30).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (30) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Note that this will also get rid of the materials we're using for the three raster files, but since we want to edit those anyway, its fine if we delete them for now.
 
@@ -78,15 +78,15 @@ Select all the non-building (road) objects in a collection. Make sure that the a
 
 From here, just add a new material by pressing "New" and rename it "Roads". Then, click the drop down on the right and select "Copy Material to Selected". We're not going to edit the colors of this material right now, but by assigning it properly here, we've just made it much easier for us to do so later. Repeat this process for the rest of the collections.
 
-<figure><img src=".gitbook/assets/image (2).png" alt="" width="171"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (2) (1).png" alt="" width="171"><figcaption></figcaption></figure>
 
 We'll now repeat this process for the buildings. With all the buildings selected, create a new material and name it "Buildings". Note that you might see this in your material properties tab when you go to create a new material:
 
-<figure><img src=".gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 There's no harm in them being there, but you can get rid of these empty material slots with the Material Utilities add-on. With our add-on enabled, go into the drop down menu again, and press "Remove All Material Slots"
 
-<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Automated Editing:
 
@@ -119,7 +119,7 @@ If you press run, you should see some text outputed in the Console, and after a 
 Finished in 1.1514198780059814 seconds
 ```
 
-<figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Note that this Python file relies on the names of collections and objects being formatted in the default pattern given by Blosm, if you want to rename your objects, either do it after running the Python script or edit the script itself.
 
@@ -133,13 +133,13 @@ In general, I'm modeling our environment based on this [render](https://www.matt
 
 First, we'll switch over to Cycles and use a GPU as our rendering device. Next, we'll add in a sun. I'm placing the sun (with a strength of 15) just below Manhattan, pointed towards the buildings.&#x20;
 
-<figure><img src=".gitbook/assets/image (5).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 I think this gives us enough definition while still brightening the scene - the shadows also don't look too shabby.&#x20;
 
 After that, we'll need to set up a base plane object, to have our objects appear as if they're on a map instead of floating in space (since shadows will now be case on the plane). We'll first add a plane, and scale it up with Shift+A -> Plane -> S -> 100000. Align the plane so that our city is somewhat centered:
 
-<figure><img src=".gitbook/assets/image (7).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (7) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 We're trying to get a render that makes it appear as if this plane blends smoothly with the background. This is an effect we can achieve by mimicking something that happens in real life photography studios:
 
@@ -149,15 +149,15 @@ The curve at the bottom of the backdrop makes the transition between the floor t
 
 Simply select the plane, and extrude a backdrop edge upwards (Tab -> 2 -> E -> Z):
 
-<figure><img src=".gitbook/assets/image (8).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Then select the edge between the vertical and horizontal planes, press Control/Command + B, and drag out your cursor. Before clicking to confirm the placement of the plane, scroll down to add more segments to smooth out the new surface between the two planes. The resulting plane should look something like this:
 
-<figure><img src=".gitbook/assets/image (9).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (9) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 We can right click the plane and shade smooth to even out the surface even more. Now, with the camera pointing in the appropriate direction, the background will merge seamlessly into the base plane. The last thing we need to do is add a material to the plane. I'll be using a solid white color. Make sure that you label the material accordingly:
 
-<figure><img src=".gitbook/assets/image (10).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (10) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 That's all the set up we'll do for our background, with that set in place, we can move on to seeing how the foreground (buildings/roads) will look.
 
@@ -171,11 +171,11 @@ I find that the hex color #E5D8CE is suitable for all the buildings and #000000 
 
 So, with one building selected, simply change its material:
 
-<figure><img src=".gitbook/assets/image (11).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (11) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Do the same for any of the objects that use the road material:
 
-<figure><img src=".gitbook/assets/image (13).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (13) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 ## Conclusion
 
@@ -183,4 +183,18 @@ Do the same for any of the objects that use the road material:
 
 After these changes take effect, we should be able to see them in the rendered view of the 3D viewport:
 
-<figure><img src=".gitbook/assets/image (12).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (12) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+
+You might notice that certain areas of the map have darker shaded materials:
+
+<figure><img src=".gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+This is due to the overlaps between buildings that occurs when we bring in OSM data (only in Cycles). Normally, the boolean modifier would help us solve these overlaps and miscolorings, but since the buildings have such a complex geometry, applying the modifier lags significantly and is not as effective. A simple workaround I've found is just to add a meter or two to the dimensions of the buildings on one side of the overlap:
+
+<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+
+Adding 2 meters to the left buildings made the overlap look like this:
+
+<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
+Obviously, the change isn't perfect, but it gets rid of a lot of the dark splots that come from object overlaps (formally known as Z-Fighting). You can repeat this process for any buildings that cause overlaps.
