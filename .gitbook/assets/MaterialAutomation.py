@@ -4,7 +4,7 @@ import time
 start_time = time.time()
 
 #list of map_xx.osm collection numbers to cycle through
-collectionList = [20,21]
+collectionList = [22]
 
 #delete the objects provided in object list for each collection
 def deleteObjects(objectList):
@@ -33,15 +33,20 @@ def convertObjectsWire():
                 o.select_set(True)
                 #adding this line for object.convert, which needs to have an active object - this line makes it the last
                 bpy.context.view_layer.objects.active = o
-        
-    #convert to mesh
-    bpy.ops.object.convert(target='MESH')
-    #add wireframe modifier
-    bpy.ops.object.modifier_add(type='WIREFRAME')
-    #set the wireframe modifier thickness
-    bpy.context.object.modifiers["Wireframe"].thickness = 0.5
-    #apply the modifier to all the objects we have selected
-    bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+    
+    #if there is at least 1 object selected
+    if(len(bpy.context.selected_objects) != 0):
+        #convert to mesh
+        bpy.ops.object.convert(target='MESH')
+        #add wireframe modifier
+        bpy.ops.object.modifier_add(type='WIREFRAME')
+        #set the wireframe modifier thickness
+        bpy.context.object.modifiers["Wireframe"].thickness = 0.5
+        #apply the modifier to all the objects we have selected (if there are no objects to copy to, coninute)
+        try:
+            bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+        except:
+            pass
     
 #convert coastline objects to "wires" in a new method since they start as meshes
 def convertCoastlines():
@@ -51,24 +56,33 @@ def convertCoastlines():
     
     #cycle through collections, choosing all the coastline objects
     for c in collectionList:
-        bpy.data.objects["map_"+str(c)+".osm_coastlines"].select_set(True)
-        #adding this line for object.convert, which needs to have an active object - this line makes it the last
-        bpy.context.view_layer.objects.active = bpy.data.objects["map_"+str(c)+".osm_coastlines"]
+        #using a try catch since buildings might not exist for a collection
+        try:
+            bpy.data.objects["map_"+str(c)+".osm_coastlines"].select_set(True)
+            #adding this line for object.convert, which needs to have an active object - this line makes it the last
+            bpy.context.view_layer.objects.active = bpy.data.objects["map_"+str(c)+".osm_coastlines"]
+        except:
+            continue
     
-    #convert to curve
-    bpy.ops.object.convert(target='CURVE')
-    #for all the selected objects, change the bevel depth
-    #need to do this in a loop since it is an individal object property
-    for o in bpy.context.selected_objects:
-        o.data.bevel_depth = 0.5
-    #scale to make it 2D (0 along the Z)
-    bpy.ops.transform.resize(value=(1,1,0))
-    #convert to mesh
-    bpy.ops.object.convert(target='MESH')
-    #add wireframe modifier
-    bpy.ops.object.modifier_add(type='WIREFRAME')
-    #apply the modifer to all the objects we have selected
-    bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+    #if there is at least 1 object selected
+    if(len(bpy.context.selected_objects) != 0):
+        #convert to curve
+        bpy.ops.object.convert(target='CURVE')
+        #for all the selected objects, change the bevel depth
+        #need to do this in a loop since it is an individal object property
+        for o in bpy.context.selected_objects:
+            o.data.bevel_depth = 0.5
+        #scale to make it 2D (0 along the Z)
+        bpy.ops.transform.resize(value=(1,1,0))
+        #convert to mesh
+        bpy.ops.object.convert(target='MESH')
+        #add wireframe modifier
+        bpy.ops.object.modifier_add(type='WIREFRAME')
+        #apply the modifier to all the objects we have selected (if there are no objects to copy to, coninute)
+        try:
+            bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+        except:
+            pass
 
 #sets materials for the buildings and the roads
 def setMaterials():
@@ -76,15 +90,25 @@ def setMaterials():
     mat = bpy.data.materials.new(name="Buildings")
     #cycle through collections
     for c in collectionList:
-        #choose the building object in each collection
-        o = bpy.data.objects["map_"+str(c)+".osm_buildings"]
-        #see if material slost exists
-        if o.data.materials:
-            #if material slots exists, then prepend the material to make it active
-            o.data.materials[0] = mat
-        else:
-            #else, if this is the first material, append it
-            o.data.materials.append(mat)
+        #using a try catch since buildings might not exist for a collection
+        try:
+            #choose the building object in each collection
+            o = bpy.data.objects["map_"+str(c)+".osm_buildings"]
+            
+            #set the building object as active (needed for the next line)
+            bpy.context.view_layer.objects.active = o
+            #remove all material slots from the buildings (makes the material we add the only one)
+            bpy.ops.view3d.materialutilities_remove_all_material_slots()
+            
+            #see if material slots exists
+            if o.data.materials:
+                #if material slots exists, then prepend the material to make it active
+                o.data.materials[0] = mat
+            else:
+                #else, if this is the first material, append it
+                o.data.materials.append(mat)
+        except:
+            continue
             
     #make a new road material
     mat = bpy.data.materials.new(name="Roads")

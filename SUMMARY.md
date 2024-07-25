@@ -17,4 +17,9 @@
 ## Rendering
 
 * [Keyframing for Animations](rendering/keyframing-for-animations.md)
+* [Creating an Optimized Render](rendering/creating-an-optimized-render.md)
 * [Rendering on a Cluster](rendering/rendering-on-a-cluster.md)
+
+***
+
+* [Appendix](appendix.md)

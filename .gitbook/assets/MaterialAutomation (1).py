@@ -42,8 +42,11 @@ def convertObjectsWire():
         bpy.ops.object.modifier_add(type='WIREFRAME')
         #set the wireframe modifier thickness
         bpy.context.object.modifiers["Wireframe"].thickness = 0.5
-        #apply the modifier to all the objects we have selected
-        bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+        #apply the modifier to all the objects we have selected (if there are no objects to copy to, coninute)
+        try:
+            bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+        except:
+            pass
     
 #convert coastline objects to "wires" in a new method since they start as meshes
 def convertCoastlines():
@@ -75,8 +78,11 @@ def convertCoastlines():
         bpy.ops.object.convert(target='MESH')
         #add wireframe modifier
         bpy.ops.object.modifier_add(type='WIREFRAME')
-        #apply the modifer to all the objects we have selected
-        bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+        #apply the modifier to all the objects we have selected (if there are no objects to copy to, coninute)
+        try:
+            bpy.ops.object.modifier_copy_to_selected(modifier="Wireframe")
+        except:
+            pass
 
 #sets materials for the buildings and the roads
 def setMaterials():
@@ -89,7 +95,12 @@ def setMaterials():
             #choose the building object in each collection
             o = bpy.data.objects["map_"+str(c)+".osm_buildings"]
             
-            #see if material slost exists
+            #set the building object as active (needed for the next line)
+            bpy.context.view_layer.objects.active = o
+            #remove all material slots from the buildings (makes the material we add the only one)
+            bpy.ops.view3d.materialutilities_remove_all_material_slots()
+            
+            #see if material slots exists
             if o.data.materials:
                 #if material slots exists, then prepend the material to make it active
                 o.data.materials[0] = mat

@@ -14,17 +14,17 @@ Be sure that you're labeling your materials appropriately, to stay organized wit
 
 The CHS health survey shapefile provides several custom properties that represent survey data points. If we want to apply a color scale to the polygons based on a custom property, we can easily do that via the shader editor (using nodes). Here's where you can find the custom properties of all the CHS objects:
 
-<figure><img src="../.gitbook/assets/image.png" alt="" width="280"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16).png" alt="" width="280"><figcaption></figcaption></figure>
 
 First, to get a better understanding of what the data represents, you can look through any data that accompanied the shapefile download - specifically the XML which provides definitions for all the abbreviated variables. I'll be using the "exercs2" attribute for this tutorial.
 
 Back in Blender, open up a Shader Editor viewport, select any one of the objects under the CHS collection, and add a new material:
 
-<figure><img src="../.gitbook/assets/image (1).png" alt="" width="319"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt="" width="319"><figcaption></figcaption></figure>
 
 From here, we'll need to add just three nodes to get it working:
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 The attribute node converts the "color" of the value of the custom object property "exercs2" into the map range node, which converts the original number, which has a range from 0 to 100 as indicated by the XML description of the data, into a number readible by Blender (0 to 1). From there, the numbers are converted to colors based on a color ramp node, and fed back into the Principled BSDF and finally into the Material Output.&#x20;
 
@@ -76,11 +76,13 @@ With our nodes in place, we might not immediately see a change in color, this mi
 
 To apply the material (and color scale) to all objects in this collection, simply navigate to the Material Properties tab, and with all of the objects in the CHS collection selected, press copy to selected. You should now see something like this in the viewport:
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 If you don't see this, make sure that your nodes match mine **exactly** (Name: exercs2, Type: Object, From Min: 0.000, From Max: 0.000):
 
-<figure><img src="../.gitbook/assets/image (4).png" alt="" width="259"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt="" width="259"><figcaption></figcaption></figure>
+
+Note that the legend shown in the rendered video was created manually in Google Drawings, using gradients within that software, the numbers from our Python script output here, and the colors on the Color Ramp to match up the data.
 
 ## Shapefile Point Objects
 
@@ -94,11 +96,11 @@ Now that we have the objects we want to be placed at each vertex, we can edit th
 
 With the dead\_trees object selected, go to a Geometry Node Editor workspace, and add a new set of geometry nodes:
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 We'll now add Object Info, Transform Geometry and Instance on Points nodes to achieve our desired output:
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 All this set up is doing is taking the Geometry from an object in our scene (Tree), transforming it (though in this case I'm leaving it default), instancing that geometry at every point (given by the Group Input), and outputting that information.
 
@@ -106,13 +108,13 @@ While the Transform Geometry node isn't being used in this scenario, it's useful
 
 You'll now see trees at every location that was previously just a point:
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
 Right now, the trees don't have a color, but in the render their material is a red emission surface. You can change the material of the trees by editing the "original" tree that is duplicated at each point (the Tree object in this case). If we change the material there, it will automatically update across the scene:
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 If you would like to do any other conditional coloring, that would have to be done through the geometry nodes.
 
@@ -168,7 +170,7 @@ With all our border objects containing the right material and modifiers, we can 
 
 <figure><img src="../.gitbook/assets/image (32).png" alt="" width="260"><figcaption></figcaption></figure>
 
-For now, we'll leave this as is (but hide it in the 3D viewport). We'll be keyframing the edges of this object in a later section, so that the borders don't show when we're close enough to the city to see buildings or when we're showing another map so they don't distract from the other content.
+Make sure to hide this object in the render if the camera is positioned close enough to the city (where the viewer will be able to differentiate city from baseplane.
 
 ## Transparent Raster Materials
 
@@ -180,7 +182,7 @@ Note that you might want to move these three TIF files up 1m or so, to make sure
 
 We'll start with "dead\_tree\_v1" which is a headmap for dead trees in NYC. With this object selected, add a new material in the Shader Editor workspace. Add an Image Texture node and connect it to the Principled BSDF. Also add a UV Map with the rastUVmap value and connect it to the vector of the Image Texture node. The result should look like this and you should now see the raster image in the 3D viewport (barring object overlaps, and ensuring that you're in Rendered View):
 
-<figure><img src="../.gitbook/assets/image (16).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Note that the UV Map node won't make a difference right now since our plane doesn't have an elevation/displacement. Still, it's good practice to leave the UV Map node connected incase we change the plane later. We'll now work on removing the image background, since its current state doesn't look too visually appealing. This node set up is based on this two minute [tutorial](https://www.youtube.com/watch?v=\_DYYlYrKvoE), where the set up is fully explained.&#x20;
 
@@ -210,7 +212,7 @@ Ideally, you should change the color scale more accurately within another softwa
 
 To generate that scale, I used QGIS to find the range of values (-8 to 8) and then used Google Drawings to make a scale gradient that matched the color ramp in Blender. Obviously, if you didn't change the color ramp in Blender, you can just use the given scale from whatever external GIS program you choose.
 
-We'll now repeat this node process for each of the other two raster objects, changing some of the values of the nodes slightly, to make them accomodate for the different background colors and image files that we're using:
+We'll now repeat this node process for each of the other two raster objects (you can copy the nodes with Control/Command + C and paste them into another object), changing some of the values of the nodes slightly, to make them accomodate for the different background colors and image files that we're using:
 
 temperature\_deviation\_parsed:
 
