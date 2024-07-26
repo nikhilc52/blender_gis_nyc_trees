@@ -16,9 +16,9 @@ We'll be using the Adroit super computer for this process. The first step in ren
 
 Once you're logged in, go to the top bar and press Files and click on your home directory. From here, create a new folder somewhere that is going to hold your Blender files:
 
-<figure><img src="../.gitbook/assets/image (40).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (42).png" alt="" width="563"><figcaption></figcaption></figure>
 
-**Make sure to add in your image files for the raster data in the same location as it is locally**, so that the Blender file on Adroit can reference the same images with the same relative path. I'm also adding the PNG files I used to make the trees, since they are required for loading the alive\_trees texture within our model.
+**Make sure to add in your image files for the raster data in the same location as it is locally**, so that the Blender file on Adroit can reference the same images with the same relative path (here, that's in gis\_data). I'm also adding the PNG files I used to make the trees (in blender\_trees), since they are required for loading the alive\_trees texture within our model.
 
 **Be sure that the Blender file you're inputting has all the proper settings**, since we won't be able to edit them from Adroit (don't worry about the file output path or the render engine, we'll coordinate those with Adroit later ).
 
