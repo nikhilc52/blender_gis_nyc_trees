@@ -34,7 +34,7 @@ Now, we'll need to run (**and edit**) one command to render a set of frames:
 /home/efeibush/blender/blender-4.2.0-linux-x64/blender -b file.blend -o /home/NETID/Blender/nyc_trees/images -E CYCLES  -s 1 -e 5 -a  --  --cycles-device OPTIX
 ```
 
-This command uses the Blender application in the efeibush directory to open the blender file in the background (-b file.blend), sets an output path (-o /home/NETID/) , uses the Cycles render engine (-E), starts at frame 1 (-s 1), ends at frame 5 (-e 5), renders all frames between (-a), and uses the OPTIX cycles device to render out frames (-- --cycles-device OPTIX). Change the variables to match your scene. You can read more about how to customize the settings of this command [here](https://docs.blender.org/manual/en/latest/advanced/command\_line/arguments.html#command-line-args-cycles-render-options).&#x20;
+This command uses the Blender application in the efeibush directory to open the blender file in the background (-b file.blend), sets an output path (-o /home/NETID/) , uses the Cycles render engine (-E), starts at frame 1 (-s 1), ends at frame 5 (-e 5), renders all frames between (-a), and uses the OPTIX cycles device (which is the fastest of the handful of devices) to render out frames (-- --cycles-device OPTIX). Change the variables to match your scene. You can read more about how to customize the settings of this command [here](https://docs.blender.org/manual/en/latest/advanced/command\_line/arguments.html#command-line-args-cycles-render-options).&#x20;
 
 Make sure that you're in the working directory where the .blend file is located.
 
