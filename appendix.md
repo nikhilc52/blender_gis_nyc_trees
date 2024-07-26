@@ -11,7 +11,9 @@ In the original Blender file in [GitHub](nyc\_trees.blend.zip), there are a few 
 
 ## Video Tutorial
 
-It might be useful to see a video tutorial going through the steps outlined in here for further clarity. This tutorial is currently a work in progress and **will be published soon**.
+It might be useful to see a video tutorial going through the steps outlined in here for further clarity. This tutorial is available here:
+
+{% embed url="https://youtu.be/EolRdIAXdM0" %}
 
 ## Rendered Video Editing
 
