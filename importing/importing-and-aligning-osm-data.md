@@ -6,7 +6,7 @@
 
 Importing 3D Open Street Map data is where the magic happens in this visualization. Up until this point, importing the vector and raster data was something that all other programs could do (more efficiently too, probably). From now on, however, as we deal with 3D data, Blender is in a league of its own, with its customizability, beauty, and power, second-to-none.
 
-We'll be using the Blosm extension in this module, so make sure it's installed and enabled.
+We'll be using the Blosm extension in this module, so make sure it's **installed and enabled**.
 
 Most of the difficulty in this project lies here, since the details for projection get really intricate. In fact, the changes we have to make are so slight that the creator of the Blosm add-on themselves didn't recognize that a projection method exists:&#x20;
 
@@ -22,11 +22,11 @@ If we go within the "Scene Properties" tab, under "Custom Properties", we can se
 
 <figure><img src="../.gitbook/assets/image (15) (1) (1).png" alt="" width="333"><figcaption></figcaption></figure>
 
-We're going to use Blosm to import OSM data. However, Blosm uses a different set of fields for its CRS alignment: "lat" and "lon", corresponding to latitude and longitude. Right now, the fields only correspond to the parameters interpreted by BlenderGIS.
+We're going to use Blosm to import OSM data. However, **Blosm uses a different set of fields for its CRS** alignment: "lat" and "lon", corresponding to latitude and longitude. Right now, the fields only correspond to the parameters interpreted by BlenderGIS.
 
-Without these parameters in place, the initial Blosm OSM import would create it's own CRS, as the mesh for whatever arbitrary location we select would **always** be placed at the (0,0,0) point of the scene, as opposed to its corresponding location on the map.
+Without these parameters in place, the initial Blosm OSM import would create it's own CRS, and the mesh for whatever arbitrary location we select would **always** be placed at the (0,0,0) point of the scene, as opposed to its corresponding location on the map.
 
-To prevent this from happening, we need to tell Blosm that there is already a CRS in place, by changing the parameter names to something interpretable. Click on the settings icon next to latitude, and change the "Property Name" to "lat". Do the same for longitude (-> "lon"):
+To prevent this from happening, we need to tell Blosm that there is already a CRS in place, by changing the parameter names to something interpretable. Click  on the settings icon next to latitude, and change the "Property Name" to "lat". Do the same for longitude (-> "lon"):
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -60,7 +60,7 @@ With that done, we'll go back to the Blosm sidebar, and (with the bpyproj add-on
 
 <figure><img src="../.gitbook/assets/image (11) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-The SRID is just anverticesvertices identifier for the CRS we're using (i.e. EPSG:2263). We'll put that into the field:
+The SRID is just an identifier for the CRS we're using (i.e. EPSG:2263). We'll put that into the field:
 
 <figure><img src="../.gitbook/assets/image (12) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -78,11 +78,11 @@ From here, we can just press "import" to align and bring in our data. After a fe
 
 <figure><img src="../.gitbook/assets/image (16) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
-We can now repeat this process for the rest of the city, selecting, copying, pasting, and importing the appropriate data (our settings save, so there's no need to change anything with the CRS). While not an issue right now, try to limit the number of overlaps of buildings/coordinate boxes. The fewer the number of overlaps, the less work we have to do later when generating material colors for the buildings  (since overlaps cause buildings to darken).
+We can now repeat this process for the rest of the city, selecting, copying, pasting, and importing the appropriate data (our settings save, so there's no need to change anything with the CRS). While not an issue right now, **try to limit the number of overlaps of buildings/coordinate boxes**. The fewer the number of overlaps, the less work we have to do later when generating material colors for the buildings  (since overlaps cause buildings to darken).
 
-You might notice that the heights of the buildings are a bit shortened. While there isn't a way to get them 100% accurate, we can do one of two things to make them look more realistic. One is just to approximate the height by scaling up the "buildings" object along the z-axis only, until it looks "normal". Another, more complicated method is to find the real-world dimensions of a building, find the building in Blender, then measuring the x and y dimensions in Blender-units (using its vertices) and scaling the z-axis only, according to how the x and y are scaled, to make everything accurate. I imagine that the first method is more efficient, since the heights of buildings don't need to be 100% accurate for the point of the video to be understood. However, this varies case-to-case.
+You might notice that the heights of the buildings are a bit shortened. While there isn't a way to get them 100% accurate, we can do one of two things to make them look more realistic. One is just to approximate the height by scaling up the "buildings" object along the z-axis only, until it looks "normal". Another, more complicated method is to find the real-world dimensions of a building, find the building in Blender, then measuring the X and Y dimensions in Blender-units (using its vertices) and scaling the Z-axis only, according to how the X and Y are scaled, to make everything accurate. I imagine that the first method is more efficient, since the heights of buildings don't need to be 100% accurate for the point of the video to be understood. However, this varies case-to-case.
 
-Make sure to apply whatever changes to sizing you do to one set of buildings, to all buildings, to preserve scale.
+Make sure to apply whatever changes to sizing you do to one set of buildings, **to all buildings**, to preserve scale.
 
 ### From a Path/File
 
@@ -90,7 +90,7 @@ Note that we can also import OSM data from a file instead of the online server. 
 
 <figure><img src="../.gitbook/assets/image (18) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
-Also note that when Blosm saves a copy of our import locally, it does so in two parts: map\_x.osm and map\_x\_extra.osm. The majority of the mesh is stored within the base copy, and when we import the base copy, Blosm automatically looks for the extra.osm file to fill in any gaps in the data. This means that whenever we select a file to import (through Blosm), we should always select the base .osm file.
+Also note that when Blosm saves a copy of our import locally, it does so in two parts: map\_x.osm and map\_x\_extra.osm. The majority of the mesh is stored within the base copy, and when we import the base copy, Blosm automatically looks for the extra.osm file to fill in any gaps in the data. This means that whenever we select a file to import (through Blosm), **we should always select the base .osm file**.
 
 <figure><img src="../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -101,3 +101,5 @@ Also note that when Blosm saves a copy of our import locally, it does so in two 
 After filling in our city with small (but large enough to limit overlaps) .osm files, we'll end up with something like this:
 
 <figure><img src="../.gitbook/assets/image (28) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+
+Note that it might be desirable to rename certain collections from the base "map\_xx.osm". However, you should do this at the end of the next section, [Setting Up OSM Materials and the Environment](../materials/setting-up-materials-and-objects.md), since a Python script within that section requires the names to be in their original form. &#x20;

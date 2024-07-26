@@ -10,7 +10,7 @@ There are three main types of keyframes that we used in the final render and are
 * Render Visibility
 * Material
 
-I'm not going to go over every single keyframe in the video, as they all involve repeating the same steps over and over again. Instead, in this section we'll go over some foundational examples of all these keyframing situations, so that you can apply them, if needed, across the animation.
+I'm not going to go over every single keyframe in the video, as they all involve repeating the same steps over and over again. Instead, in this section we'll go over some **foundational examples** of all these keyframing situations, so that you can apply them, if needed, across the animation.
 
 ### Of Note
 

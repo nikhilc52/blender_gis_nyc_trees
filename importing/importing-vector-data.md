@@ -4,9 +4,9 @@
 
 ***
 
-Importing vector and raster data is simple to do, but there are complications that can make things difficult to understand, so it's important to go through this section step-by-step.
+Importing vector and raster data is simple to do, but there are complications that can make things difficult to understand, so it's important to go through this section **step-by-step**.
 
-We'll be using the BlenderGIS add-on for this section, so make sure it's installed and enabled.
+We'll be using the BlenderGIS add-on for this section, so make sure it's **installed and enabled**.
 
 ## Setting a Scene CRS
 
@@ -20,15 +20,15 @@ We can do this by going into View -> Geoscene, and setting **both** the CRS and 
 
 <figure><img src="../.gitbook/assets/image (11) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-However, this approach comes with the caveat of having the data slightly offset from the origin, since the origin becomes the mid point of the specified CRS area and not the mid point of the data we're importing.&#x20;
+However, this approach comes with the caveat of having the data slightly offset from the origin, since the origin becomes the mid point of the specified CRS area and not the midpoint of the data we're importing.&#x20;
 
 For instance, if we set the CRS to EPSG:2263, the origin in Blender (0,0,0) would be somewhere in the middle of New York, even though we're only dealing with data from NYC.&#x20;
 
 <figure><img src="../.gitbook/assets/image (10) (1) (1) (1) (1).png" alt="" width="398"><figcaption></figcaption></figure>
 
-Our data would still be accurately placed, but slightly annoying to work with, since we'd have to move and tweak a  few settings to accommodate from the offset. Still, this is a viable option depending on the data, but for the work we're doing, instead of dealing with that, I find it is much easier to just have the initial import be the baseline CRS, and have objects import relative to that.
+Our data would still be accurately placed, but slightly annoying to work with, since we'd have to move and tweak a few settings to accommodate from the offset. Still, this is a viable option depending on the data, but for the work we're doing, instead of dealing with that, I find it is **much easier** to just have the initial import be the baseline CRS, and have objects import relative to that.
 
-Note that changing a scene CRS after it has been set and objects have been imported, will not re-align the already imported objects, and only affect the new ones.
+Note that changing a scene CRS after it has been set and objects have been imported, **will not re-align** the already imported objects, and only affect the new ones.
 
 ## Importing Vectors (Shapefiles) in Blender
 
@@ -46,7 +46,7 @@ Once selected, a menu should pop up showing some options for projecting.
 
 <figure><img src="../.gitbook/assets/image (12) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-We can leave that first field as is: even though we don't want any elevation, since the shapefile we're using isn't 3D, the geometry z-value will be 0 anyway. We can leave the next two boxes unchecked as well, since those options don't fit the purpose of this import (which is just to be a background map). Next, the CRS is very important.
+We can leave that first field as is: even though we don't want any elevation, since the shapefile we're using isn't 3D, the geometry z-value will be 0 anyway. We can leave the next two boxes unchecked as well, since those options don't fit the purpose of this import (which is just to be a background map). Next, the CRS is **very important**.
 
 Since this is our initial import, and we haven't yet specified the scene CRS, this import will set the scene CRS. We can click the "+" to add a new CRS, since by default, the BlenderGIS add-on doesn't come with EPSG:2263. From there, we can query our file's CRS. Note that you can find any .shp file's CRS by looking in its .prj (projection) file with a text editor.
 
@@ -111,7 +111,7 @@ This looks good, so we can move on to the [alive set](https://github.com/nikhilc
 
 <figure><img src="../.gitbook/assets/image (19) (1) (1).png" alt="" width="482"><figcaption></figcaption></figure>
 
-Note that you if we were to render this right now, we wouldn't actually be able to see the points - vertices aren't visible in a 3D space. To see them, we'll have to attach objects to each of the points, which we'll go over in the [Setting Up Materials and Objects](../materials/setting-up-materials-and-objects.md) page.
+Note that you if we were to render this right now, **we wouldn't actually be able to see the points** - vertices aren't visible in a 3D space. To see them, we'll have to attach objects to each of the points, which we'll go over in the [Setting Up SHP and TIF Materials](../materials/setting-up-shp-and-tif-materials.md) page.
 
 ## Conclusion
 
