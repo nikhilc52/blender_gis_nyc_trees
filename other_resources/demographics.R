@@ -6,6 +6,7 @@ library(gt)
 df <- data.frame(race=c('White', 'Black', 'Asian', 'Other','Mixed'),
                  racial_compostion=c(.299,.356,.030,.257,.058))
 
+#generate a table of the above values
 table <- df |> 
   arrange(-racial_compostion) |> 
   gt() |> 
@@ -23,6 +24,8 @@ table <- df |>
     decimals=1
   )
 
+#print the table to the viewer
 print(table)
 
+#save the table to a path
 gtsave(table,"demographics.png",path="/Users/nc7172/Documents/GitHub/blender_gis_nyc_trees/video files")  
