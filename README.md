@@ -13,7 +13,7 @@ With a passionate community of users and developers behind the software, there a
 
 As we generate this visual, I'll be introducing concepts that can be referenced to generate models of any geospatial data. **This tutorial is meant for those who have at least a beginner background in Blender and a basic understanding of GIS data.**
 
-The following add-ons are required for this tutorial (and will probably be needed for any 3D geospatial project):
+The following add-ons are **required** for this tutorial (and will probably be needed for any 3D geospatial project):
 
 * [BlenderGIS](https://github.com/domlysz/BlenderGIS)
 * [Blosm](https://prochitecture.gumroad.com/l/blender-osm)
@@ -26,6 +26,6 @@ Within this menu, you can enable the Material Utilities add-on.
 
 For this project and generally, it might be useful to have a third-party source to double check alignment and configure GIS data in ways that aren't possible in Blender. For this project, [QGIS](https://www.qgis.org/download/) is recommended, but not necessary.
 
-Finally, it's going to be required to access the System Console to see print statements from our add-ons. On Windows, this can be done by clicking Window, then "Toggle System Console". On Mac, we'll have to open Blender from the Terminal to gain access to the system console, which will then print on the Terminal itself. You can look into a tutorial on how to do that on Blender's [website](https://docs.blender.org/manual/en/latest/advanced/command\_line/launch/index.html).
+Finally, it's going to be **required** to access the System Console to see print statements from our add-ons. On Windows, this can be done by clicking Window, then "Toggle System Console". On Mac, we'll have to open Blender from the Terminal to gain access to the system console, which will then print on the Terminal itself. You can look into a tutorial on how to do that on Blender's [website](https://docs.blender.org/manual/en/latest/advanced/command\_line/launch/index.html).
 
 This tutorial uses Blender 4.1, but should be compatible with all Blender versions 2.8+.

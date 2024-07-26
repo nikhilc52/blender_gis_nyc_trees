@@ -4,7 +4,7 @@
 
 ***
 
-With building and road materials in place, we can moving on to coloring the rest of our GIS data. Make sure that you're saving the project as we go along, since the steps in this module might cause an unexpected crash.
+With building and road materials in place, we can moving on to coloring the rest of our GIS data. **Make sure that you're saving the project as we go along**, since the steps in this module might cause an unexpected crash.
 
 Be sure that you're labeling your materials appropriately, to stay organized with your work.
 
@@ -50,7 +50,7 @@ Mac:
 /Applications/Blender.app/Contents/Resources/4.1/python/bin/python3.11 -m pip install pandas
 ```
 
-Once that runs (and you do the same for geopandas), just restart Blender, making sure to save our progress so far so that we don't have to re-do any steps.
+Once that runs (and you do the same for geopandas), we can run the code (if it doesn't work, just restart Blender, **making sure to save our progress so far** so that we don't have to re-do any steps).
 
 If we now run the code (making sure to change the path file in the gpd.read\_file call), we'll see that we get this output:
 
@@ -78,7 +78,7 @@ To apply the material (and color scale) to all objects in this collection, simpl
 
 <figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
-If you don't see this, make sure that your nodes match mine **exactly** (Name: exercs2, Type: Object, From Min: 0.000, From Max: 0.000):
+If you don't see this, make sure that your nodes match mine **exactly** (Name: exercs2, Type: Object, From Min: 0.000, From Max: 100.000):
 
 <figure><img src="../.gitbook/assets/image (4) (1).png" alt="" width="259"><figcaption></figcaption></figure>
 
@@ -110,7 +110,7 @@ You'll now see trees at every location that was previously just a point:
 
 <figure><img src="../.gitbook/assets/image (10) (1).png" alt=""><figcaption></figcaption></figure>
 
-Right now, the trees don't have a color, but in the render their material is a red emission surface. You can change the material of the trees by editing the "original" tree that is duplicated at each point (the Tree object in this case). If we change the material there, it will automatically update across the scene:
+Right now, the trees don't have a color, but in the render their material is a red emission surface. You can change the material of the trees by editing the "original" tree that is duplicated at each point (the Tree object in this case). If we change the material there, it will automatically update across the scene (make sure you press "Use Nodes" if the surface options don't look like this):
 
 <figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -122,7 +122,7 @@ We can repeat this process entirely for the alive\_trees object, replacing the d
 
 To test that the trees have loaded in properly, render a random frame in the animation, positioning the camera close enough to the street to see the tree objects. Ensure that the alive\_trees object is set to be visible in the render. A minute or so later, you should see the tree.
 
-Note that if you're not seeing the leaves correctly (showing as pink) this means that the leaf texture didn't load properly. To fix it, simply go to the original AliveTree object, go to the Materials tab, and click on the Tree Branch material and open it in a Shader Editor. Then, adjust the image texture to match the tree branch material in the [GitHub](../blender\_trees/tree\_branch.png). If you plan to render using Adroit, make sure that you place the tree branch PNG in a location whose relative path is transferrable.
+Note that if you're not seeing the leaves correctly (showing as pink) this means that **the leaf texture didn't load properly**. To fix it, simply go to the original AliveTree object, go to the Materials tab, and click on the Tree Branch material and open it in a Shader Editor. Then, adjust the image texture to match the tree branch material in the [GitHub](../blender\_trees/tree\_branch.png). If you plan to render using Adroit, make sure that you place the tree branch PNG in a location whose relative path is transferrable.
 
 ## General Shapefile Materials
 
@@ -142,7 +142,7 @@ Do the same for the nyct2020 object. With it selected, add a new material with a
 
 One of the more useful shapefile objects that we imported is for borough boundaries (titled "geo\_export\_b1e80c11-1f1f-419f-b92b-13fe75482d5d"). If we're planning to have the camera far away from the scene, having these outlines (along with the base map) to differentiate the base plane from the city is very useful.&#x20;
 
-There's just a few things we have to get set up to use the boundaries effectively. Make sure to follow these steps in order (doing it out of order might cause our object to become 2D, where certain modifiers won't work).
+There's just a few things we have to get set up to use the boundaries effectively. **Make sure to follow these steps in order** (doing it out of order might cause our object to become 2D, where certain modifiers won't work).
 
 First, assign a material to the object. Since this is meant to be an outline, I'm going to use a solid black color. Make sure to label the material accordingly:
 
@@ -182,7 +182,7 @@ Make sure to hide this object in the render if the camera is positioned close en
 
 When we deleted all the materials to set up the materials for buildings and roads, we also deleted the materials corresponding to our three TIF files, so we'll have to re-do them here. We're also going to assign different color scales to the images and make their backgrounds transparent, since Blender cannot import geo-referenced tif images with transparent backgrounds.
 
-Note that you might want to move these three TIF files up 1m or so, to make sure they won't collide/overlap with our base plane, which is located at Z=0m.
+Note that **you might want to move these three TIF files up 1m or so**, to make sure they won't collide/overlap with our base plane, which is located at Z=0m.
 
 We'll start with "dead\_tree\_v1" which is a heatmap for dead trees in NYC. With this object selected, add a new material in the Shader Editor workspace. Add an Image Texture node and connect it to the Principled BSDF. Also add a UV Map with the rastUVmap value and connect it to the vector of the Image Texture node. The result should look like this and you should now see the raster image in the 3D viewport (barring object overlaps, and ensuring that you're in Rendered View):
 

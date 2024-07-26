@@ -8,7 +8,7 @@ Assigning pretty material colors and lighting can really elevate a render from g
 
 The Material: Material Utilities add-on is required for this section, and can be enabled via Edit -> Preferences -> Add-Ons -> Material Utilities (Search)
 
-Also make sure that we're in Cycles (with a GPU device if you have one). Cycles renders include ray tracing features and are generally more visually appealing. You can switch to Cycles in the Render Properties tab:
+Also make sure that we're in **Cycles** (with a GPU device if you have one). Cycles renders include ray tracing features and are generally more visually appealing. You can switch to Cycles in the Render Properties tab:
 
 <figure><img src="../.gitbook/assets/image (13).png" alt="" width="375"><figcaption></figcaption></figure>
 
@@ -18,7 +18,7 @@ If the GPU device looks greyed out, go to Edit -> Preferences -> System and make
 
 ***
 
-There are two ways we can manipulate objects (which involves removing unneeded ones, applying materials, and converting object meshes). One is by automating the manipulation using a Python script, and the other is committing the changes manually. While the Python script is far easier, to understand what each line is doing, I recommend you to look over (but not necessarily actually complete) the manual method, which can help understanding.
+There are two ways we can manipulate objects (which involves removing unneeded ones, applying materials, and converting object meshes). One is by automating the manipulation using a Python script, and the other is committing the changes manually. While the Python script is **far easier**, to understand what each line is doing, I recommend you to look over (**but not necessarily actually complete**) the manual method, which can help understanding.
 
 ### Manually Editing:
 
@@ -44,9 +44,9 @@ If we look in the viewport, all of the roads will now be "hollow" and only made 
 
 <figure><img src="../.gitbook/assets/image (34).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Repeat this process for all of the roads (and paths\_footways) within the other map\_xx.osm collections, for consistency across the scene.
+**Repeat this process for all of the roads (and paths\_footways)** within the other map\_xx.osm collections, for consistency across the scene.
 
-The last change we'll need to make before we start assigning materials is to the coastlines object. Since the coastlines objects are currently 1D (line) meshes, applying a wireframe modifier won't work. We'll have to convert them to curves, via the same menu: Object -> Convert -> Curve.
+The last change we'll need to make before we start assigning materials is to the coastlines object. Since the coastlines objects are currently 1D (line) meshes, applying a wireframe modifier won't work. We'll have to convert **all of them** to curves, via the same menu: Object -> Convert -> Curve.
 
 From here, in the Curve Properties menu, add a depth of 0.5 to the curve:
 
@@ -56,11 +56,11 @@ This makes the curve into a spherical model, which is a bit off what we had for 
 
 <figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
-So, with the coastline curve selected, we can scale it to 0 along the Z axis (by pressing S -> Z -> 0) to remove its 3D dimension and have it match the other roads. Accordingly, we'll convert it back to a mesh (Object -> Convert -> Mesh), and then apply the same wireframe modifier (with a thickness of 0.02m this time) to make the object similar to what we performed earlier with the roads.
+So, **with all the coastline curves selected**, we can scale them to 0 along the Z axis (by pressing S -> Z -> 0) to remove its 3D dimension and have it match the other roads. Accordingly, we'll convert them back to a mesh (Object -> Convert -> Mesh), and then apply the same wireframe modifier (with a thickness of 0.02m this time) to make the objects similar to what we performed earlier with the roads.
 
 Note that the difference in thickness is due to the fact that the conversion we did with the coastlines adds additional edges to the object, which makes the object thicker in its wireframe, and thus can be compensated for by decreasing the wireframe thickness.
 
-Make sure to apply this effect to all the coastline objects in the scene (under different .osm collections).
+**Make sure to apply this effect to all the coastline objects in the scene (under different .osm collections).**
 
 #### Materials:
 
@@ -80,7 +80,7 @@ Note that this will also get rid of the materials we're using for the three rast
 
 The next step we'll take is to assign a solid color to all the buildings and another solid color to all the roads. This is so that we can easily edit all the meshes at once.
 
-Select all the non-building (road) objects in a collection. Make sure that the active material is a road too - you can check this by looking at the top of the Material Properties tab and ensuring that it shows an object we'd like to be assigned a road material:
+Select **all** the non-building (road) objects in a collection. Make sure that the active material is a road too - you can check this by looking at the top of the Material Properties tab and ensuring that it shows an object we'd like to be assigned a road material:
 
 <figure><img src="../.gitbook/assets/image (37).png" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -88,11 +88,11 @@ From here, just add a new material by pressing "New" and rename it "Roads". Then
 
 <figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt="" width="171"><figcaption></figcaption></figure>
 
-We'll now repeat this process for the buildings. With any building selected, create a new material and name it "Buildings". Note that you might see this in your material properties tab when you go to create a new material:
+We'll now repeat this process for the buildings. As you go through the building objects, you might see this in your material properties tab when you go to create a new material:
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
-We'll get rid of these empty material slots (which mess with our buildings by making some faces the default material) with the Material Utilities add-on. With our add-on enabled, go into the drop down menu again, and press "Remove All Material Slots"
+We'll get rid of these empty material slots (which mess with our buildings by making some faces the default material) with the Material Utilities add-on. With our add-on enabled, go into the drop down menu again, and press "Remove All Material Slots". **Make sure to do this for every building object**:
 
 <figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -100,9 +100,9 @@ After that's done, add in the Building material and copy it to all the other bui
 
 ### Automated Editing:
 
-While manually editing each of the collections will provide you with a greater understanding of the steps were taking in our rendering preparations, it is much easier to generate and run a Python script to do everything for us.
+While manually editing each of the collections will provide you with a greater understanding of the steps were taking in our rendering preparations, it is **much easier** to generate and run a Python script to do everything for us.
 
-The following script will accomplish the exact same steps that we did above, but much quicker. While I won't go over every line of code in this notebook, the comments within the Python file make it intuitive to understand. Remember that the steps taken here are just a baseline - you can edit the .py file to accommodate for any changes you make (like not wanting to delete a certain object or wanting a different material for certain roads).
+The following script will accomplish the exact same steps that we did above, but much quicker. While I won't go over every line of code in this notebook, the comments within the Python file make it intuitive to understand. **Remember that the steps taken here are just a baseline** - you can edit the .py file to accommodate for any changes you make (like not wanting to delete a certain object or wanting a different material for certain roads).
 
 {% file src="../.gitbook/assets/MaterialAutomation (1).py" %}
 
@@ -117,7 +117,7 @@ collectionList = [20,21,22,23,24,25,26,27]
 
 Next, make sure that all the objects in the OSM collections are visible in the 3D viewport, otherwise the Python file won't be able to access them.&#x20;
 
-Lastly, be sure to save a copy of your project before you run the Python script - some of the changes we make will be difficult to easily reverse if needed.
+Lastly, be sure to **save a copy of your project** before you run the Python script - some of the changes we make will be difficult to easily reverse if needed.
 
 If you press run, you should see some text outputted in the Console, and after a few seconds you should see the changes in the Blender environment.
 
@@ -141,7 +141,7 @@ Before we start editing the materials, we should probably set up a rendering env
 
 In general, I'm modeling our environment based on this [render](https://www.matteoprati.com/progetti/manhattan/) by Matteo Prati.&#x20;
 
-First, we'll switch over to Cycles and use a GPU as our rendering device. Next, we'll add in a sun. I'm placing the sun (with a strength of 15) just below Manhattan, pointed towards the buildings.&#x20;
+First, we'll make sure we're switched over to Cycles and use a GPU as our rendering device. Next, we'll add in a sun. I'm placing the sun (with a strength of 15) just below Manhattan, pointed towards the buildings.&#x20;
 
 <figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -169,19 +169,19 @@ We can right click the plane and shade smooth to even out the surface even more.
 
 <figure><img src="../.gitbook/assets/image (10) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
-That's all the set up we'll do for our background, with that set in place, we can move on to seeing how the foreground (buildings/roads) will look.
+If during your animation the camera is facing a direction that doesn't have the background plane in its view, you can keyframe the rotation of the plane object to move along with the camera view. That's all the set up we'll do for our background, with that set in place, we can move on to seeing how the foreground (buildings/roads) will look.
 
 ## Assigning Building and Road Materials
 
 ***
 
-The last step in this process is actually assigning materials for our buildings and roads. Remember that when we ran the Python script, we set materials to all the building objects and road objects. This makes it very simple to change materials (since they all reference the same material object): simply select any building object, and all the other building objects will reflect any changes to the material.&#x20;
+The last step in this process is actually assigning materials for our buildings and roads. Remember that when we ran the Python script, we set materials to all the building objects and road objects. This makes it very simple to change materials (since they all reference the same material object): simply select **any** building object, and all the other building objects will reflect any changes to the material.&#x20;
 
 I find that the hex color #E5D8CE is suitable for all the buildings and #000000 is good for the roads:
 
 So, with one building selected, simply change its material:
 
-<figure><img src="../.gitbook/assets/image (11) (1) (1).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (41).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Do the same for any of the objects that use the road material:
 
@@ -201,7 +201,7 @@ You might notice that certain areas of the map have darker shaded materials:
 
 <figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
-This is due to the overlaps between buildings that occurs when we bring in OSM data (only in Cycles). Normally, the boolean modifier would help us solve these overlaps and color errors, but since the buildings have such a complex geometry, applying the modifier lags significantly and is not as effective. A simple workaround I've found is just to add a meter or two to the dimensions of the buildings on one side of the overlap:
+This is due to the overlaps between buildings that occurs when we bring in OSM data (only in Cycles). Normally, the boolean modifier would help us solve these overlaps and color errors, but since the buildings have such a complex geometry, applying the modifier **lags significantly** and is not as effective. A simple workaround I've found is just to add a meter or two to the dimensions of the buildings on one side of the overlap:
 
 <figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 

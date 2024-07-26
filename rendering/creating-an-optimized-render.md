@@ -6,13 +6,13 @@
 
 If we were to render a medium-length animation with the default settings, our render would take days to complete. This is due to the sheer size of our file, objects, and lights. The Blender file used to create the final render you saw in the introduction was just under 500 MB, with millions of vertices, faces, and triangles.
 
-To compensate for this, we'll need to sacrifice some quality in our render. Still, if we choose the right export settings we can get a relatively fast render time with a good-looking quality.
+To compensate for this, we'll need to sacrifice some quality in our render. Still, **if we choose the right export settings** we can get a relatively fast render time with a good-looking quality.
 
 ### Of Note
 
-When I rendered my image sequence for the final movie, Blender crashed at whatever frame I turned off the render visibility for the alive\_trees object, so I'd have to restart the animation to render the rest of the animation after it (since I saved the PNGs that outputted before the crash). Be mindful that the same might happen to you - there isn't a quick fix for it, just know that Blender might crash during the render and prepare to have to render the animation in two parts if needed (be sure to save your file before you render).
+When I rendered my image sequence for the final movie, **Blender crashed at whatever frame I turned off the render visibility for the alive\_trees object**, so I'd have to restart the animation to render the rest of the animation after it (since I saved the PNGs that outputted before the crash). Be mindful that the same might happen to you - there isn't a quick fix for it, just know that Blender might crash during the render and prepare to have to render the animation in two parts if needed (**be sure to save your file before you render**).
 
-Also note that I had a bug where either the dead\_trees object or the alive\_trees object wouldn't show up in the final render. I believe this is due to the file overloading Blender's memory, and can be fixed by saving the Blender file at the frame where the problem occurs and re-opening the Blender file at that same location (then rendering).
+Also note that I had a bug where either the dead\_trees object or the alive\_trees object wouldn't show up in the final render. I believe this is due to the file overloading Blender's memory, and can be fixed by **saving the Blender file at the frame where the problem occurs and re-opening the Blender file at that same location** (then rendering).
 
 ## Understanding Time-Consuming Frames
 
@@ -36,7 +36,7 @@ Also keep in mind that certain frames that are just "held" in the animation (fra
 
 There are a few settings that we can change to help speed up renders. Here's a table of all of them, to see the render time when each one of them is turned on (all the other settings for each row are default, so the setting is isolated). The frame we're rendering is the first frame in the animation, which shows both the buildings and the alive trees (which is one of the more time-consuming frames in the animation).&#x20;
 
-The first change I'm making is to the number of samples, which I'm taking down from 4096 to 128. This causes a very minor loss in quality, but is necessary since a single frame with 4096 samples would take hours to render. This change will be applied in tandem with all the changes shown in the table:
+The first change I'm making is to the number of samples, which I'm taking down **from 4096 to 128**. This causes a very minor loss in quality, but is necessary since a single frame with 4096 samples would take hours to render. **This change will be applied in tandem with all the changes shown in the table:**
 
 | Isolated Setting (w/ 128 samples)                                  | Frame 1 Render Time (S) | Setting Description                                                                                        | PNG Link                                                           |
 | ------------------------------------------------------------------ | ----------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
@@ -46,7 +46,7 @@ The first change I'm making is to the number of samples, which I'm taking down f
 
 You can read more about these settings what they do [here](https://docs.blender.org/manual/en/latest/render/cycles/render\_settings/sampling.html).
 
-Combining the two above settings as well as doing minor things like making sure all other computer applications are closed and that the Blender file is in Solid Mode in the 3D viewport (saves memory) can help to significantly speed up render times.
+Combining the two above settings as well as doing minor things like making sure all other computer applications are closed and that the **Blender file is in Solid Mode** in the 3D viewport (saves memory) can help to significantly speed up render times.
 
 ## Exporting As A PNG Sequence
 
@@ -64,10 +64,16 @@ It's good practice to do a "dummy" render at a lower frame rate (so less frames/
 
 The higher the value, the more frames will be skipped between each rendered frame, making the animation render quicker, but at a lower frame rate (rendering every nth frame). Having a Step of 10 is a good place to start, since it'll create an image sequence with one tenth the frames in one tenth of the time of the final render.
 
-Make sure that the "dummy" render looks good before rendering the final product.
+Make sure that the "dummy" render looks good before rendering the final product. Also make sure that you render the "dummy" render and the final render into two different locations to avoid files being overridden.
 
 Once the sequence is rendered, if you wanted to turn the PNG sequence into a video, you can import the files into most video editing softwares as a image sequence, and it will automatically turn it into a video. If you don't want to do that in an external software, Blender also provides its own video editing.
 
 While I won't go too in depth about it (since it really isn't the best platform for editing), you can go to File -> New -> Video Editing to generate a new video editing space. From there, press Add -> Image/Sequence and select the PNGs you want to import making sure that they are ordered correctly in the file manager (ordering by name).
 
 You can edit the duration, frame rate, change the output file name, location, and format in the Output Properties (FFmpeg video is standard) tab at the top right.&#x20;
+
+## Conclusion
+
+***
+
+We've now successfully set up settings for an optiminal render, and we can get that render of PNG sequences into a video format if needed.

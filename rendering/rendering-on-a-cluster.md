@@ -6,7 +6,7 @@
 
 While rendering on one's own computer is simple, you can also render on a cluster with multiple parallel batches to speed up rendering. For instance, you can use a super computer to render frames 0 to 1000, 1000 to 2000, etc. all at the same time (in simultaneous commands).
 
-This page is only applicable if you have a Princeton University NetID.
+**This page is only applicable if you have a Princeton University NetID.**
 
 ## Rendering on Adroit
 
@@ -18,9 +18,9 @@ Once you're logged in, go to the top bar and press Files and click on your home 
 
 <figure><img src="../.gitbook/assets/image (40).png" alt="" width="563"><figcaption></figcaption></figure>
 
-Make sure to add in your image files for the raster data in the same location as it is locally, so that the Blender file on Adroit can reference the same images with the same relative path. I'm also adding the PNG files I used to make the trees, since they are required for loading the alive\_trees texture within our model.
+**Make sure to add in your image files for the raster data in the same location as it is locally**, so that the Blender file on Adroit can reference the same images with the same relative path. I'm also adding the PNG files I used to make the trees, since they are required for loading the alive\_trees texture within our model.
 
-Be sure that the Blender file you're inputting has all the proper settings, since we won't be able to edit them from Adroit (don't worry about the file output path or the render engine, we'll coordinate those with Adroit later ).
+**Be sure that the Blender file you're inputting has all the proper settings**, since we won't be able to edit them from Adroit (don't worry about the file output path or the render engine, we'll coordinate those with Adroit later ).
 
 Next, open up a terminal on your local computer. We'll first need to ssh into adroit-vis:
 
@@ -28,13 +28,13 @@ Next, open up a terminal on your local computer. We'll first need to ssh into ad
 ssh NETID@adroit-vis.princeton.edu
 ```
 
-Now, we'll need to run (and edit) one command to render a set of frames:
+Now, we'll need to run (**and edit**) one command to render a set of frames:
 
 ```
 /home/efeibush/blender/blender-4.2.0-linux-x64/blender -b file.blend -o /home/NETID/Blender/nyc_trees/images -E CYCLES  -s 1 -e 5 -a  --  --cycles-device OPTIX+CPU
 ```
 
-This command uses the Blender application in the efeibush directory to open the blender file in the background (-b file.blend), sets an output path (-o /home/NETID/) , uses the Cycles render engine (-E), starts at frame 1 (-s 1), ends at frame 5 (-e 5), renders all frames between (-a), and uses the OPTIX cycles device along with the CPU to render out frames (-- --cycles-device OPTIX+CPU). You can read more about how to customize the settings of this command [here](https://docs.blender.org/manual/en/latest/advanced/command\_line/arguments.html#command-line-args-cycles-render-options).&#x20;
+This command uses the Blender application in the efeibush directory to open the blender file in the background (-b file.blend), sets an output path (-o /home/NETID/) , uses the Cycles render engine (-E), starts at frame 1 (-s 1), ends at frame 5 (-e 5), renders all frames between (-a), and uses the OPTIX cycles device along with the CPU to render out frames (-- --cycles-device OPTIX+CPU). Change the variables to match your scene. You can read more about how to customize the settings of this command [here](https://docs.blender.org/manual/en/latest/advanced/command\_line/arguments.html#command-line-args-cycles-render-options).&#x20;
 
 Make sure that you're in the working directory where the .blend file is located.
 
@@ -64,7 +64,7 @@ This opens up a copy of Blender that is stored within the efeibush directory. Yo
 
 ***
 
-This process can then be duplicated in a new terminal, by following the exact same steps above. From this, you would be able to split up a render into multiple parallel execution statements to very easily simplify the rendering process and get a final render much faster. For instance, one command could render frames 1 to 100, another from frames 101 to 200, etc.
+This process can then be duplicated in a new terminal, by following the exact same steps above. From this, you would be able to split up a render into multiple parallel execution statements to very easily simplify the rendering process and get a final render much faster. For instance, one command could render frames 1 to 100, then you could open another terminal and command for from frames 101 to 200, etc.
 
 To save the images you outputted to your directory on Adroit, you can use this command on a local terminal:
 
