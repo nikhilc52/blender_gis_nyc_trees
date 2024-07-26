@@ -20,10 +20,10 @@ Here are some notes about the final video:
 * The final rendered output in Blender was then editing using Adobe Premiere Pro&#x20;
 * The voiceover was recorded using Voice Memos and processed using Adobe Podcast&#x20;
 * The Wiki table for the demographics in the Bronx was created in R, using the script found in the [repo](other\_resources/demographics.R)
-  * The source is [https://en.wikipedia.org/wiki/Race\_and\_ethnicity\_in\_New\_York\_City](https://en.wikipedia.org/wiki/Race\_and\_ethnicity\_in\_New\_York\_City)
+  * The data is originally from [Wikipedia](https://en.wikipedia.org/wiki/Race\_and\_ethnicity\_in\_New\_York\_City)
 * The reference for some of the statistics about the percentage of dead trees within Hunts Point comes from manipulating the data as described in this R script in the [repo](other\_resources/tree\_analysis.R)
-* The source for the statistic about Black New Yorkers dying at twice the rate as white ones comes from [here](https://a816-dohbesp.nyc.gov/IndicatorPublic/data-features/heat-report/)
-* The source for the information about trees and runoff comes from [here](https://19january2017snapshot.epa.gov/soakuptherain/soak-rain-trees-help-reduce-runoff\_.html)
+* The source for the statistic about Black New Yorkers dying at twice the rate as white ones comes from [NYC Environment and Health](https://a816-dohbesp.nyc.gov/IndicatorPublic/data-features/heat-report/)
+* The source for the information about trees and runoff comes from the [EPA](https://19january2017snapshot.epa.gov/soakuptherain/soak-rain-trees-help-reduce-runoff\_.html)
 
 ## About
 
