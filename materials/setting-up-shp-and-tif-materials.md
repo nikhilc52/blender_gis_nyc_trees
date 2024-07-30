@@ -52,7 +52,7 @@ Mac:
 
 Once that runs (and you do the same for geopandas), we can run the code (if it doesn't work, just restart Blender, **making sure to save our progress so far** so that we don't have to re-do any steps).
 
-If we now run the code (making sure to change the path file in the gpd.read\_file call), we'll see that we get this output:
+If we now run the code (making sure to change the path file in the `gpd.read_file` call), we'll see that we get this output:
 
 ```
   FIRST_BORO                            FIRST_UHF_  exercs2

@@ -108,7 +108,7 @@ The following script will accomplish the exact same steps that we did above, but
 
 Open up a new workspace and switch to the "Text Editor" space. Within that area, open up the MaterialAutomation.py file. Before we can run it, there are a few changes we need to make. First, its a good idea to get rid off all the materials in our scene. This will make our scene lag significantly less when we go to edit materials. Follow the steps [above](setting-up-materials-and-objects.md#materials) to delete materials from the Blender File section of the Outliner.
 
-Second, we'll need to change a few of the lines within the Python file. First, update the collectionList on line 7 to match whatever map\_xx.osm collections you have in your scene (i.e. if one collection is called map\_1.osm, the collectionList should contain the number 1). This list represents the collections which will be iterated over.
+Second, we'll need to change a few of the lines within the Python file. First, update the `collectionList` on line 7 to match whatever map\_xx.osm collections you have in your scene (i.e. if one collection is called map\_1.osm, the collectionList should contain the number 1). This list represents the collections which will be iterated over.
 
 ```python
 #list of map_xx.osm collection numbers to cycle through

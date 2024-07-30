@@ -26,6 +26,15 @@ Within this menu, you can enable the Material Utilities add-on.
 
 For this project and generally, it might be useful to have a third-party source to double check alignment and configure GIS data in ways that aren't possible in Blender. For this project, [QGIS](https://www.qgis.org/download/) is recommended, but not necessary.
 
-Finally, it's going to be **required** to access the System Console to see print statements from our add-ons. On Windows, this can be done by clicking Window, then "Toggle System Console". On Mac, we'll have to open Blender from the Terminal to gain access to the system console, which will then print on the Terminal itself. You can look into a tutorial on how to do that on Blender's [website](https://docs.blender.org/manual/en/latest/advanced/command\_line/launch/index.html). Once the System Console is open (or you've launched from the Terminal), we're ready to go.
+Finally, it's going to be **required** to access the System Console to see print statements from our add-ons. On Windows, this can be done by clicking Window, then "Toggle System Console". On Mac, we'll have to open Blender from the Terminal to gain access to the system console, which will then print on the Terminal itself. To do so, simply run the following commands in the Terminal:
+
+```
+cd /Applications/Blender.app/Contents/MacOS
+./Blender
+```
+
+You can look into a tutorial on how to do make this call simpler (since you will probably need to open Blender this way more than once) on Blender's [website](https://docs.blender.org/manual/en/latest/advanced/command\_line/launch/index.html).&#x20;
+
+Once the System Console is open (or you've launched from the Terminal), we're ready to go.
 
 This tutorial uses Blender 4.1, but should be compatible with all Blender versions 2.8+.
