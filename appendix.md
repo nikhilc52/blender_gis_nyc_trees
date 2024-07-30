@@ -2,6 +2,8 @@
 
 ## Errors in Original Blender File
 
+***
+
 In the original Blender file in [GitHub](nyc\_trees.blend.zip), there are a few minor discrepancies between what's within that file and what's explained here. In general, **you should tend to follow the directions specified within this book** rather than copying any errors that exist in the original file:
 
 * The alignment of the buildings to the rest of the BlenderGIS imports was done manually rather than using the CRS and alignment provided in Blosm
@@ -11,11 +13,15 @@ In the original Blender file in [GitHub](nyc\_trees.blend.zip), there are a few 
 
 ## Video Tutorial
 
+***
+
 It might be useful to see a video tutorial going through the steps outlined in here for further clarity. This tutorial is available here:
 
 {% embed url="https://youtu.be/EolRdIAXdM0" %}
 
 ## Rendered Video Editing
+
+***
 
 Here are some notes about the final video:
 
@@ -27,7 +33,21 @@ Here are some notes about the final video:
 * The source for the statistic about Black New Yorkers dying at twice the rate as white ones comes from [NYC Environment and Health](https://a816-dohbesp.nyc.gov/IndicatorPublic/data-features/heat-report/)
 * The source for the information about trees and runoff comes from the [EPA](https://19january2017snapshot.epa.gov/soakuptherain/soak-rain-trees-help-reduce-runoff\_.html)
 
+## Adroit Rendering Note
+
+***
+
+If you plan to render on Adroit-Vis, you might be tempted to parallelize your program, by running multiple instances of the same command (at the same time), each rendering a different part of the sequence. However, when we render out a sequence, Adroit automatically splits up the work among its two GPU nodes. This means that **there's no point in parallelizing**, or running multiple instances, as it'll just "overload" the GPUs by giving already running GPUs more work, ultimately slowing down the render.
+
+Here's a look at both Adroit-Vis GPUs as we render out our scene. You can see that both GPUs are using our Blender process, without us having to parallelize:
+
+<figure><img src=".gitbook/assets/Screenshot 2024-07-30 at 4.50.50 PM.png" alt="" width="563"><figcaption></figcaption></figure>
+
+This output can be viewed by opening a new Adroit-Vis terminal and running `nvidia-smi` while the rendering process is ocurring.
+
 ## About
+
+***
 
 This reference book was developed in 2024 by **Nikhil Chinchalkar** under the guidance of **Carolina Roe-Raymond** and **Eliot Feibush** for Princeton University's Research Computing department.
 
