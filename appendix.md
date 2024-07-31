@@ -19,6 +19,8 @@ It might be useful to see a video tutorial going through the steps outlined in h
 
 {% embed url="https://youtu.be/EolRdIAXdM0" %}
 
+The Blender file used in the tutorial is available to download [here](other\_resources/demo.blend.gz.zip).
+
 ## Rendered Video Editing
 
 ***
@@ -44,6 +46,12 @@ Here's a look at both Adroit-Vis GPUs as we render out our scene. You can see th
 <figure><img src=".gitbook/assets/Screenshot 2024-07-30 at 4.50.50 PM.png" alt="" width="563"><figcaption></figcaption></figure>
 
 This output can be viewed by opening a new Adroit-Vis terminal and running `nvidia-smi` while the rendering process is ocurring.
+
+## GitHub
+
+***
+
+This GitBook manual is connected to a [GitHub repository](https://github.com/nikhilc52/blender\_gis\_nyc\_trees/tree/main) that contains all the files used to recreate this project.
 
 ## About
 
