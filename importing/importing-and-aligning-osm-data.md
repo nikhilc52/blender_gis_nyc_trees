@@ -84,7 +84,7 @@ You might notice that the heights of the buildings are a bit shortened. While th
 
 Make sure to apply whatever changes to sizing you do to one set of buildings, **to all buildings**, to preserve scale.
 
-### From a Path/File
+### From a Path/File:
 
 Note that we can also import OSM data from a file instead of the online server. Every time we import an OSM from the server, Blosm also saves a copy locally, to the file directory we specified in the add-on settings. If we ever need to import a file from there (say, if the file crashed or was left unsaved) we can just switch to a file import within the Blosm settings.&#x20;
 

@@ -226,7 +226,7 @@ tree\_heatmap\_v1:
 
 <figure><img src="../.gitbook/assets/image (21).png" alt="" width="563"><figcaption></figcaption></figure>
 
-## Conclusion:
+## Conclusion
 
 ***
 

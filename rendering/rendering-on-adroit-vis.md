@@ -44,7 +44,7 @@ Make sure that you're in the working directory where the .blend file is located.
 
 When you run this command, you'll see a bunch of text outputted that marks how far along Blender is when rendering each frame. You can make sure each frame is being rendered properly by looking back in the home directory on [https://myadroit.princeton.edu/](https://myadroit.princeton.edu/).
 
-### Of Note
+### Of Note:
 
 Note that you can also open up the Blender GUI from Adroit-Vis. The GUI is a bit slow, so it's best to render as described above (still, this is an option):&#x20;
 

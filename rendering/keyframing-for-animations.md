@@ -12,7 +12,7 @@ There are three main types of keyframes that we used in the final render and are
 
 I'm not going to go over every single keyframe in the video, as they all involve repeating the same steps over and over again. Instead, in this section we'll go over some **foundational examples** of all these keyframing situations, so that you can apply them, if needed, across the animation.
 
-### Of Note
+### Of Note:
 
 Note that you can only see the keyframes on the timeline for objects that are currently visible in the viewport. Also note that you can see all the keyframes that are currently within the scene in the Dope Sheet window, by turning off the "Only Show Selected Button":
 

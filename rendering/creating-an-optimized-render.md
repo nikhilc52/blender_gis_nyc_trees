@@ -8,7 +8,7 @@ If we were to render a medium-length animation with the default settings, our re
 
 To compensate for this, we'll need to sacrifice some quality in our render. Still, **if we choose the right export settings** we can get a relatively fast render time with a good-looking quality.
 
-### Of Note
+### Of Note:
 
 When I rendered my image sequence for the final movie, **Blender crashed at whatever frame I turned off the render visibility for the alive\_trees object**, so I'd have to restart the animation to render the rest of the animation after it (since I saved the PNGs that outputted before the crash). Be mindful that the same might happen to you - there isn't a quick fix for it, just know that Blender might crash during the render and prepare to have to render the animation in two parts if needed (**be sure to save your file before you render**).
 

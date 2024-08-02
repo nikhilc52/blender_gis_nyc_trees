@@ -97,7 +97,7 @@ We can repeat this same process with the [2009 CHS survey](https://www.nyc.gov/s
 
 <figure><img src="../.gitbook/assets/image (7) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-### Importing points
+### Importing points:
 
 The last set of files we need to import are sets of points for each location of each tree. We have one file for all the alive trees and one file for all the dead ones (the [original file](https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/pi5s-9p35) isn't split - I've linked the split files in the [Data Sources](../data-sources.md) page, but you can create them yourself in QGIS). Since the [dead ones](https://github.com/nikhilc52/blender\_gis\_nyc\_trees/tree/b8e2d3d38b7b5c7a72589d1dc124ea76433ad9f1/gis\_data/vector\_files/nyc\_tree\_census\_2015\_dead) will take less time (there are fewer dead trees, so fewer points), we'll start with that.&#x20;
 
